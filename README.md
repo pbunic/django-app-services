@@ -1,2 +1,1 @@
-## blog v0.0.1
-work in progress
+## v0.1.0

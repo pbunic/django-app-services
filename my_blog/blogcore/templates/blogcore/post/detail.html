@@ -1,0 +1,55 @@
+{% extends "blogcore/base.html" %}
+{% load blogcore_tags %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p class="topic">
+        {% for tag in post.tags.all %}
+            <a href="{% url 'blogcore:post_list_topic' tag.slug %}">
+                {{ tag.name|upper }}
+            </a>
+            {% if not forloop.last %} {% endif %}
+        {% endfor %}
+    </p>
+    <p class="date">
+        Published {{ post.publish }}
+    </p>
+    <p class="intro">
+        {{ post.intro }}
+    </p>
+    {{ post.body|markdown }}
+    <p>
+        share via:<br>
+        <a href="{% url 'blogcore:post_share' post.slug %}">email</a>
+    </p>
+
+    <h3>Recommended for reading:</h3>
+
+    {% for post in recommend %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>
+    {% empty %}
+        There are no similar posts in related topic.
+    {% endfor %}
+
+    {% with comments.count as total_comments %}
+        <h2>
+            {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+    {% endwith %}
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="info">
+                Comment {{ forloop.counter }} by {{ comment.name }}
+                {{ comment.created }}
+            </p>
+            {{ comment.body|linebreaks }}
+        </div>
+    {% empty %}
+        <p>There are no comments.</p>
+    {% endfor %}
+    {% include "blogcore/post/includes/comment_form.html" %}
+{% endblock %}
