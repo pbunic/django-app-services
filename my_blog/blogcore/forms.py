@@ -31,5 +31,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['name', 'email', 'body']
         labels = {
-            'body': _('Comment:'),
+            'name': _('name:'),
+            'email': _('email:'),
+            'body': _('comment:'),
         }

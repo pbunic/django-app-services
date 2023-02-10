@@ -26,10 +26,11 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     intro = models.TextField(max_length=1500)
     body = models.TextField()
+    footnotes = models.TextField(blank=True)
     tags = TaggableManager(
         verbose_name=_('Topics'),
-        help_text=_('A comma-separated topics. ' +
-                    'Use quotes for multiple words ' +
+        help_text=_('A comma-separated topics. '
+                    'Use quotes for multiple words '
                     'and lowercase letters.')
     )
     publish = models.DateTimeField(default=timezone.now)

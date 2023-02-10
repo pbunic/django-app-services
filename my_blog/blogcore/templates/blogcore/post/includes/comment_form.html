@@ -1,4 +1,4 @@
-<h2>Add a comment</h2>
+<h3>add a comment</h3>
     <form action="{% url 'blogcore:post_comment' post.slug %}" method="post">
         {{ form.as_p }}
         {% csrf_token %}

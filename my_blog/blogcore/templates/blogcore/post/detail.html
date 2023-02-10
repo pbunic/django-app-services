@@ -19,10 +19,15 @@
     <p class="intro">
         {{ post.intro }}
     </p>
-    {{ post.body|markdown }}
+    <p class="body">
+        {{ post.body|markdown }}
+    </p>
+    <p class="footnotes">
+        {{ post.footnotes }}
+    </p>
     <p>
-        share via:<br>
-        <a href="{% url 'blogcore:post_share' post.slug %}">email</a>
+        <a href="{% url 'blogcore:post_share' post.slug %}">send post via email</a> |
+        <a href="{% url 'blogcore:post_feed' %}">rss feed</a>
     </p>
 
     <h3>Recommended for reading:</h3>
@@ -36,9 +41,9 @@
     {% endfor %}
 
     {% with comments.count as total_comments %}
-        <h2>
+        <h3>
             {{ total_comments }} comment{{ total_comments|pluralize }}
-        </h2>
+        </h3>
     {% endwith %}
     {% for comment in comments %}
         <div class="comment">
