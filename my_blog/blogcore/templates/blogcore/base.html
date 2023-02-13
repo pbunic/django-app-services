@@ -1,14 +1,24 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}this_is_web_page{% endblock %}</title>
+    <link rel="icon" type="image/icon" href="{% static 'icons/favicon.ico' %}">
     <link href="{% static 'css/blogcore.css' %}" rel="stylesheet">
 </head>
+
 <body>
-    <div id="content">
-    {% block content %}
-    {% endblock %}
+    <div id="page-container">
+        <div id="content-wrap">
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+        <footer id="footer">
+            {% include "blogcore/footer.html" %}
+        </footer>
     </div>
 </body>
 </html>

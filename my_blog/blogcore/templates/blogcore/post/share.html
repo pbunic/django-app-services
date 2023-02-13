@@ -10,7 +10,7 @@
             <a href="mailto: {{ form.cleaned_data.to_mail }}">{{ form.cleaned_data.to_mail }}</a>
         </p>
     {% else %}
-        <i><h4>Share a post:</h4></i> <h2>{{ post.title }}</h2>
+        <i><h4>share a post:</h4></i> <h2>{{ post.title }}</h2>
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}
