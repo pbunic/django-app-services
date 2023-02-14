@@ -1,0 +1,38 @@
+{% extends "blogcore/base.html" %}
+{% load blogcore_tags %}
+
+{% block title %}Posts search{% endblock %}
+
+{% block content %}
+    {% if query %}
+        <h2>search results for "{{ query }}":</h2>
+        <h3>
+            {% with results.count as total_results %}
+                found {{ total_results }} result{{ total_results|pluralize }}
+            {% endwith %}
+        </h3>
+        {% for post in results %}
+            <h4>
+                <a href="{{ post.get_absolute_url }}">
+                    {{ post.title }}
+                </a>
+            </h4>
+            {{ post.intro|truncatechars:400 }}
+        {% empty %}
+            <p>There are no results for your search.</p>
+        {% endfor %}
+        <p>
+        <a href="{% url 'blogcore:post_search' %}">
+            <form method="get">
+                {{ form.as_p }}
+                <input type="submit" value="search">
+            </form>
+        </a>
+        </p>
+    {% else %}
+        <form method="get">
+            {{ form.as_p }}
+            <input type="submit" value="search">
+        </form>
+    {% endif %}
+{% endblock %}

@@ -3,9 +3,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 from django.views.decorators.http import require_POST
 from django.db.models import Count
+from django.contrib.postgres.search import (
+    SearchVector,
+    SearchQuery,
+    SearchRank
+)
 from .models import Post
-from .forms import EmailPostForm, CommentForm
-
+from .forms import EmailPostForm, CommentForm, SearchForm
 from taggit.models import Tag
 
 
@@ -89,3 +93,28 @@ def post_comment(request, post):
     return render(request,
                   'blogcore/post/comment.html',
                   {'post': post, 'form': form, 'comment': comment})
+
+
+def post_search(request):
+    """Searching through blog posts."""
+
+    form = SearchForm()
+    query = None
+    results = []
+
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            search_vector = SearchVector('title', weight='A') + \
+                SearchVector('intro', weight='B') + \
+                SearchVector('body', weight='C')
+            search_query = SearchQuery(query)
+            results = Post.published.annotate(
+                search=search_vector,
+                rank=SearchRank(search_vector, search_query)
+            ).filter(rank__gte=0.3).order_by('-rank')
+
+    return render(request,
+                  'blogcore/post/search.html',
+                  {'form': form, 'query': query, 'results': results})

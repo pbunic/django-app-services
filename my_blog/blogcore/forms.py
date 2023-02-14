@@ -35,3 +35,8 @@ class CommentForm(forms.ModelForm):
             'email': _('email:'),
             'body': _('comment:'),
         }
+
+
+class SearchForm(forms.Form):
+    """Search form."""
+    query = forms.CharField(label='')
