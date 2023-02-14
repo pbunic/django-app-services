@@ -1,0 +1,7 @@
+<div id="commentform">
+    <form action="{% url 'blogcore:post_comment' post.slug %}" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Add comment"></p>
+    </form>
+</div>

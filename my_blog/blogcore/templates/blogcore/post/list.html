@@ -1,0 +1,35 @@
+{% extends "blogcore/base.html" %}
+{% load blogcore_tags %}
+
+{% block content %}
+    {% include "blogcore/post/includes/sidebar.html" %}
+
+    <div id="postgrid-container">
+        {% if tag %}
+            <h2 id="topicfilter"># {{ tag.name|upper }}</h2><br>
+        {% endif %}
+
+        {% for post in posts %}
+            <div class="postgrid">
+                <h4 class="postgrid-title">
+                    <a href="{{ post.get_absolute_url }}">
+                        {{ post.title|truncatechars:100 }}
+                    </a>
+                </h4>
+                <div class="topics">
+                    {% for tag in post.tags.all %}
+                        <a class="topic-rm" href="{% url 'blogcore:post_list_topic' tag.slug %}">
+                            <p class="topic">{{ tag.name|upper }}</p>
+                        </a>
+                        {% if not forloop.last %} {% endif %}
+                    {% endfor %}
+                </div>
+                <p id="date">
+                    Published {{ post.publish }}
+                </p>
+                <p class="intro">{{ post.intro|markdown|truncatechars:400 }}</p>
+            </div>
+        {% endfor %}
+        {% include "blogcore/pagination.html" with page=posts %}
+    </div>
+{% endblock %}
