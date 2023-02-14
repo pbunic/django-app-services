@@ -27,11 +27,11 @@
         <div id="markdownpost">{{ post.body|markdown }}</div>
         <p class="introfoot">{{ post.footnotes }}</p>
         <p id="share">
-            <a href="{% url 'blogcore:post_share' post.slug %}">send post via email</a>
-            <b> | </b>
-            <a href="#">email posts subscription</a>
-            <b> | </b>
-            <a href="{% url 'blogcore:post_feed' %}">rss feed</a>
+            <a href="{% url 'blogcore:post_share' post.slug %}">share</a>
+            <b>|</b>
+            <a href="#">newsletters</a>
+            <b>|</b>
+            <a href="{% url 'blogcore:post_feed' %}">feed</a>
         </p><hr>
 
         <!--- Recommendation and comment section. --->

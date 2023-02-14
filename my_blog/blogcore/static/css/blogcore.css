@@ -188,14 +188,13 @@ p {
 
 
 #share {
-    margin:auto;
     width:50%;
     display:inline;
     font-size:14px;
     font-family:monospace;
     border:0.1rem solid;
-    padding-left:2px;
-    padding-right:2px;
+    padding-left:12px;
+    padding-right:12px;
 }
 
 #hrecommend {

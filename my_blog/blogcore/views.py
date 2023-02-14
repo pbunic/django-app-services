@@ -6,7 +6,7 @@ from django.db.models import Count
 from django.contrib.postgres.search import (
     SearchVector,
     SearchQuery,
-    SearchRank
+    SearchRank,
 )
 from .models import Post
 from .forms import EmailPostForm, CommentForm, SearchForm
