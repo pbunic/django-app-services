@@ -27,8 +27,8 @@ class Post(models.Model):
     body = models.TextField()
     footnotes = models.TextField(blank=True)
     tags = TaggableManager(
-        verbose_name=_('Topics'),
-        help_text=_('A comma-separated topics. '
+        verbose_name=_('Tags'),
+        help_text=_('A comma-separated tags. '
                     'Use quotes for multiple words '
                     'and lowercase letters.')
     )

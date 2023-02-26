@@ -23,11 +23,11 @@
         </div><hr>
 
         <!--- Post parts and share options. --->
-        <p class="introfoot">{{ post.intro }}</p>
+        <p class="introfoot">{{ post.intro|markdown }}</p>
         <div id="markdownpost">{{ post.body|markdown }}</div>
-        <p class="introfoot">{{ post.footnotes }}</p>
+        <p class="introfoot">{{ post.footnotes|markdown }}</p>
         <p id="share">
-            <a href="{% url 'blogcore:post_share' post.slug %}">share</a>
+            <a href="{% url 'blogcore:post_share' post.slug %}">share via email</a>
             <b>|</b>
             <a href="#">newsletters</a>
             <b>|</b>

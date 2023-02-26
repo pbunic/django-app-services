@@ -1,8 +1,24 @@
+/* fonts */
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("../fonts/Roboto-Light.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("../fonts/Roboto-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "FiraCode";
+    src: url("../fonts/FiraCode-Retina.ttf") format('truetype');
+}
+
 /* globals, containers */
 /* ################### */
 body {
     color:#fff;
-    background-color:#323234;
+    background-color:#262626;
     margin:0;
     padding:0;
 }
@@ -14,16 +30,17 @@ a {
 
 h1, h2, h3, h4 {
     margin:0;
-    font-family:helvetica;
+    font-family:Roboto-Light, helvetica;
 }
 
 p {
-    font-family:helvetica;
+    font-family:Roboto-Regular, helvetica;
+    color:#deddda;
 }
 
 ::selection {
-    color:darksalmon;
-    background:#19191a;
+    color:rgb(177, 177, 177);
+    background:#181818;
 }
 
 #page-container {
@@ -41,36 +58,43 @@ p {
 }
 
 #navigation {
-    position:absolute;
-    width:15%;
-    height:100%;
-    bottom:0;
-    float:left;
-    background-color:#262626;
-    border-right-style:solid;
-    border-right-width:thin;
-    border-right-color:darksalmon;
-    text-align:center;
+    display: flex;
+    top: 0;
+    position:sticky;
+    margin-left:15%;
+    margin-right:15%;
+    width:auto;
+    height:5%;
+    border-bottom: thin solid darksalmon;
+    border-right: thin solid darksalmon;
+    border-left: thin solid darksalmon;
+    background-color:#1a1a1a;
+    justify-content:space-evenly;
 }
 
-#version {
-    font-family:monospace;
+#blogname {
+    font-family:FiraCode, monospace;
+    font-size: 14px;
     color:darksalmon;
-    background:#323234;
+    background:#1a1a1a;
 }
 
 .singlenav {
     font-size:16px;
-    font-family:monospace;
-    padding-bottom:8px;
+    font-family:FiraCode, monospace;
+    padding-bottom: 4px;
+}
+
+.navlink {
+    border-bottom-style:solid;
+    border-bottom-width:thin;
+    border-bottom-color:#1a1a1a;
 }
 
 .navlink:hover {
-    background:#4d4d4d;
-    border-left-style:solid;
-    border-left-width:thick;
-    border-left-color:darksalmon;
-    padding-left:4px;
+    border-bottom-style:solid;
+    border-bottom-width:thin;
+    border-bottom-color:darksalmon;
 }
 
 #footer {
@@ -78,38 +102,24 @@ p {
     bottom:0;
     width:100%;
     height:1.5rem;
-    background-color:#262626;
+    background-color:#1a1a1a;
     border-top-style:solid;
     border-top-width:thin;
     border-top-color:darksalmon;
     text-align:center;
 }
 
-.footpad {
-    display:inline;
-    padding-right:8px;
-}
-
-.footlink {
-    text-decoration:underline;
-    font-family:monospace;
-    text-transform:uppercase;
-}
-
-.footlink:hover {
-    color:darksalmon;
-    text-decoration:underline;
-    font-family:monospace;
-    text-transform:uppercase;
+#footlink {
+    font-family: FireCode, monospace;
+    font-size: small;
+    color: darksalmon;
 }
 
 /* post container */
+/* ################### */
 #postcontainer {
     margin-left:15%;
     margin-right:15%;
-    border-top-style:solid;
-    border-top-width:thin;
-    border-top-color:darksalmon;
 }
 
 #post-title {
@@ -117,20 +127,17 @@ p {
     padding-top:32px;
 }
 
-/* grids */
+/* list grids */
 /* ################### */
 #topicfilter {
-    font-family:monospace;
+    font-family:FiraCode, monospace;
 }
 
 #postgrid-container {
-    top:8px;
-    bottom:8px;
-    padding-top:4%;
-    padding-bottom:4%;
-    margin-left:20%;
-    margin-right:10%;
-    display:block;
+    padding-top: 4%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
 }
 
 #topicfilter {
@@ -139,9 +146,7 @@ p {
 }
 
 .postgrid {
-    width:100%;
-    display:inline-block;
-    background-color:#262626;
+    background-color:#1a1a1a;
     box-shadow: 2px 2px darksalmon;
     margin-bottom:20px;
     padding:10px;
@@ -170,7 +175,7 @@ p {
     border:1px solid;
     border-radius:5px;
     padding:2px;
-    font-family:monospace;
+    font-family:FiraCode, monospace;
     font-size:14px;
 }
 
@@ -202,7 +207,7 @@ p {
 }
 
 #postlink {
-    font-family:monospace;
+    font-family:FiraCode, monospace;
     font-size:14px;
 }
 
@@ -224,7 +229,7 @@ p {
 
 .pagenav {
     font-weight:bold;
-    background:#262626;
+    background:#1a1a1a;
     color:#fff;
     text-transform:uppercase;
     box-shadow: 1px 1px darksalmon;
@@ -241,8 +246,8 @@ p {
 
 .nopage {
     font-weight:bold;
-    background:#262626;
-    color:#262626;
+    background:#1a1a1a;
+    color:#1a1a1a;
     text-transform:uppercase;
     box-shadow: 1px 1px darksalmon;
     font-family:monospace;
@@ -302,9 +307,16 @@ textarea {
 }
 .comment {
     padding:10px;
+    background:#333333;
     border-bottom-style:solid;
     border-bottom-width:thin;
     border-bottom-color:darksalmon;
+    border-right-style:solid;
+    border-right-width:thin;
+    border-right-color:darksalmon;
+    border-left-style:solid;
+    border-left-width:thin;
+    border-left-color:darksalmon;
 }
 .comment:nth-child(even) {
     color:#d9d9d9;
