@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}this_is_web_page{% endblock %}</title>
+    <title>{% block title %}Website{% endblock %}</title>
     <link rel="icon" type="image/icon" href="{% static 'icons/favicon.ico' %}">
     <link href="{% static 'css/blogcore.css' %}" rel="stylesheet">
 </head>
 
 <body>
     <div id="page-container">
+        {% include "blogcore/navigation.html" %}
         <div id="content-wrap">
             <div id="content">
                 {% block content %}
