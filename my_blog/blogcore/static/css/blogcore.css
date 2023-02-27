@@ -1,4 +1,5 @@
-/* fonts */
+/* fonts, media */
+/* ################### */
 @font-face {
     font-family: "Roboto-Light";
     src: url("../fonts/Roboto-Light.ttf") format('truetype');
@@ -33,7 +34,7 @@ h1, h2, h3, h4 {
     font-family:Roboto-Light, helvetica;
 }
 
-p {
+p, li {
     font-family:Roboto-Regular, helvetica;
     color:#deddda;
 }
@@ -65,18 +66,18 @@ p {
     margin-right:15%;
     width:auto;
     height:5%;
-    border-bottom: thin solid darksalmon;
-    border-right: thin solid darksalmon;
-    border-left: thin solid darksalmon;
+    border-bottom: thin solid darkseagreen;
+    border-right: thin solid darkseagreen;
+    border-left: thin solid darkseagreen;
     background-color:#1a1a1a;
     justify-content:space-evenly;
 }
 
 #blogname {
-    font-family:FiraCode, monospace;
+    font-family: FiraCode, monospace;
     font-size: 14px;
-    color:darksalmon;
-    background:#1a1a1a;
+    color: darkseagreen;
+    background: #1a1a1a;
 }
 
 .singlenav {
@@ -86,33 +87,33 @@ p {
 }
 
 .navlink {
-    border-bottom-style:solid;
-    border-bottom-width:thin;
-    border-bottom-color:#1a1a1a;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #1a1a1a;
 }
 
 .navlink:hover {
-    border-bottom-style:solid;
-    border-bottom-width:thin;
-    border-bottom-color:darksalmon;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: darkseagreen;
 }
 
 #footer {
     position:absolute;
-    bottom:0;
-    width:100%;
-    height:1.5rem;
-    background-color:#1a1a1a;
-    border-top-style:solid;
-    border-top-width:thin;
-    border-top-color:darksalmon;
-    text-align:center;
+    bottom: 0;
+    width: 100%;
+    height: 1.5rem;
+    background-color: #1a1a1a;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: darkseagreen;
+    text-align: center;
 }
 
 #footlink {
     font-family: FireCode, monospace;
     font-size: small;
-    color: darksalmon;
+    color: darkseagreen;
 }
 
 /* post container */
@@ -147,7 +148,7 @@ p {
 
 .postgrid {
     background-color:#1a1a1a;
-    box-shadow: 2px 2px darksalmon;
+    box-shadow: 2px 2px darkseagreen;
     margin-bottom:20px;
     padding:10px;
 }
@@ -155,7 +156,7 @@ p {
 .postgrid-title {
     margin:0;
     padding:0;
-    border-bottom:0.1rem solid darksalmon;
+    border-bottom:0.1rem solid darkseagreen;
     font-size:18px;
 }
 
@@ -185,7 +186,7 @@ p {
 
 #date {
     display:inline;
-    color:darksalmon;
+    color:darkseagreen;
     background:#19191a;
     font-family:monospace;
     margin:0px;
@@ -203,20 +204,22 @@ p {
 }
 
 #hrecommend {
-    font-size:14px;
+    padding-top: 8px;
+    font-size: 16px;
 }
 
 #postlink {
-    font-family:FiraCode, monospace;
-    font-size:14px;
+    font-family: FiraCode, monospace;
+    font-size: 16px;
 }
 
 #totalcomm {
-    color:darksalmon;
-    font-family:monospace;
-    border-bottom-style:solid;
-    border-bottom-width:thin;
-    border-bottom-color:darksalmon;
+    padding-top: 8px;
+    color: darkseagreen;
+    font-family: monospace;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: darkseagreen;
 }
 
 /* pagination */
@@ -224,7 +227,7 @@ p {
     text-align:center;
     color:#f2f2f3;
     padding-top:8px;
-    padding-bottom:20px;
+    padding-bottom:4%;
 }
 
 .pagenav {
@@ -232,7 +235,7 @@ p {
     background:#1a1a1a;
     color:#fff;
     text-transform:uppercase;
-    box-shadow: 1px 1px darksalmon;
+    box-shadow: 1px 1px darkseagreen;
     font-family:monospace;
     font-size:14px;
     padding:4px;
@@ -249,7 +252,7 @@ p {
     background:#1a1a1a;
     color:#1a1a1a;
     text-transform:uppercase;
-    box-shadow: 1px 1px darksalmon;
+    box-shadow: 1px 1px darkseagreen;
     font-family:monospace;
     font-size:14px;
     padding:4px;
@@ -260,7 +263,7 @@ p {
 label {
     float:left;
     clear:both;
-    color:darksalmon;
+    color:darkseagreen;
     margin-bottom:4px;
     font-family:monospace;
     font-size:14px;
@@ -271,7 +274,7 @@ input, textarea {
     margin:0 0 10px;
     color:#d9d9d9;
     background:#19191a;
-    box-shadow:0.1rem 0.1rem darksalmon;
+    box-shadow:0.1rem 0.1rem darkseagreen;
     border:0;
     padding:6px 10px;
     font-size:12px;
@@ -279,7 +282,7 @@ input, textarea {
 }
 input[type=submit] {
     font-weight:bold;
-    background:darksalmon;
+    background:darkseagreen;
     color:#19191a;
     box-shadow:none;
     padding:10px 20px;
@@ -310,13 +313,13 @@ textarea {
     background:#333333;
     border-bottom-style:solid;
     border-bottom-width:thin;
-    border-bottom-color:darksalmon;
+    border-bottom-color:darkseagreen;
     border-right-style:solid;
     border-right-width:thin;
-    border-right-color:darksalmon;
+    border-right-color:darkseagreen;
     border-left-style:solid;
     border-left-width:thin;
-    border-left-color:darksalmon;
+    border-left-color:darkseagreen;
 }
 .comment:nth-child(even) {
     color:#d9d9d9;
@@ -325,5 +328,5 @@ textarea {
 .comment .info {
     font-family:monospace;
     font-size:12px;
-    color:darksalmon;
+    color:darkseagreen;
 }

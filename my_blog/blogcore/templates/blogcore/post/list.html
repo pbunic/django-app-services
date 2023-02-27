@@ -23,7 +23,7 @@
                 <p id="date">
                     Published {{ post.publish }}
                 </p>
-                <p class="intro">{{ post.intro|markdown|truncatechars:400 }}</p>
+                <p class="intro">{{ post.intro|markdown|truncatechars:450 }}</p>
             </div>
         {% endfor %}
         {% include "blogcore/post/pagination.html" with page=posts %}
