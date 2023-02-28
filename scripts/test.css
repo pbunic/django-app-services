@@ -1,4 +1,4 @@
-/* accent-color: darkseagreen */
+/* accent-color: darksalmon */
 
 /* fonts, media */
 /* ################### */
@@ -68,9 +68,9 @@ p, li {
     margin-right: 15%;
     width: auto;
     height: 5%;
-    border-bottom: thin solid darkseagreen;
-    border-right: thin solid darkseagreen;
-    border-left: thin solid darkseagreen;
+    border-bottom: thin solid darksalmon;
+    border-right: thin solid darksalmon;
+    border-left: thin solid darksalmon;
     background-color: #1a1a1a;
     justify-content: space-evenly;
 }
@@ -78,7 +78,7 @@ p, li {
 #blogname {
     font-family: FiraCode, monospace;
     font-size: 14px;
-    color: darkseagreen;
+    color: darksalmon;
     background: #1a1a1a;
 }
 
@@ -97,7 +97,7 @@ p, li {
 .navlink:hover {
     border-bottom-style: solid;
     border-bottom-width: thin;
-    border-bottom-color: darkseagreen;
+    border-bottom-color: darksalmon;
 }
 
 #footer {
@@ -108,14 +108,14 @@ p, li {
     background-color: #1a1a1a;
     border-top-style: solid;
     border-top-width: thin;
-    border-top-color: darkseagreen;
+    border-top-color: darksalmon;
     text-align: center;
 }
 
 #footlink {
     font-family: FireCode, monospace;
     font-size: small;
-    color: darkseagreen;
+    color: darksalmon;
 }
 
 /* post container */
@@ -150,7 +150,7 @@ p, li {
 
 .postgrid {
     background-color: #1a1a1a;
-    box-shadow: 2px 2px darkseagreen;
+    box-shadow: 2px 2px darksalmon;
     margin-bottom: 20px;
     padding: 10px;
 }
@@ -158,7 +158,7 @@ p, li {
 .postgrid-title {
     margin: 0;
     padding: 0;
-    border-bottom: 0.1rem solid darkseagreen;
+    border-bottom: 0.1rem solid darksalmon;
     font-size: 18px;
 }
 
@@ -188,7 +188,7 @@ p, li {
 
 #date {
     display: inline;
-    color: darkseagreen;
+    color: darksalmon;
     background: #19191a;
     font-family: monospace;
     margin: 0px;
@@ -217,11 +217,11 @@ p, li {
 
 #totalcomm {
     padding-top: 8px;
-    color: darkseagreen;
+    color: darksalmon;
     font-family: monospace;
     border-bottom-style: solid;
     border-bottom-width: thin;
-    border-bottom-color: darkseagreen;
+    border-bottom-color: darksalmon;
 }
 
 /* pagination */
@@ -237,7 +237,7 @@ p, li {
     background: #1a1a1a;
     color: #fff;
     text-transform: uppercase;
-    box-shadow: 1px 1px darkseagreen;
+    box-shadow: 1px 1px darksalmon;
     font-family: monospace;
     font-size: 14px;
     padding: 4px;
@@ -254,7 +254,7 @@ p, li {
     background: #1a1a1a;
     color: #1a1a1a;
     text-transform: uppercase;
-    box-shadow: 1px 1px darkseagreen;
+    box-shadow: 1px 1px darksalmon;
     font-family: monospace;
     font-size: 14px;
     padding: 4px;
@@ -265,7 +265,7 @@ p, li {
 label {
     float: left;
     clear: both;
-    color: darkseagreen;
+    color: darksalmon;
     margin-bottom: 4px;
     font-family: monospace;
     font-size: 14px;
@@ -276,7 +276,7 @@ input, textarea {
     margin: 0 0 10px;
     color: #d9d9d9;
     background: #19191a;
-    box-shadow: 0.1rem 0.1rem darkseagreen;
+    box-shadow: 0.1rem 0.1rem darksalmon;
     border: 0;
     padding: 6px 10px;
     font-size: 12px;
@@ -284,7 +284,7 @@ input, textarea {
 }
 input[type=submit] {
     font-weight: bold;
-    background: darkseagreen;
+    background: darksalmon;
     color: #19191a;
     box-shadow: none;
     padding: 10px 20px;
@@ -315,13 +315,13 @@ textarea {
     background: #333333;
     border-bottom-style: solid;
     border-bottom-width: thin;
-    border-bottom-color: darkseagreen;
+    border-bottom-color: darksalmon;
     border-right-style: solid;
     border-right-width: thin;
-    border-right-color: darkseagreen;
+    border-right-color: darksalmon;
     border-left-style: solid;
     border-left-width: thin;
-    border-left-color: darkseagreen;
+    border-left-color: darksalmon;
 }
 .comment:nth-child(even) {
     color: #d9d9d9;
@@ -330,5 +330,5 @@ textarea {
 .comment .info {
     font-family: monospace;
     font-size: 12px;
-    color: darkseagreen;
+    color: darksalmon;
 }
