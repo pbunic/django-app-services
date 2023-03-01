@@ -1,24 +1,33 @@
 {% load static %}
+{% load tz %}
+{% get_current_timezone as TIME_ZONE %}
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}Website{% endblock %}</title>
-    <link rel="icon" type="image/icon" href="{% static 'icons/favicon.ico' %}">
-    <link href="{% static 'css/blogcore.css' %}" rel="stylesheet">
+    <title>{% block title %}{{ request.site.name }}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/blogcore.css' %}">
+    <link rel="icon" href="{% static 'icons/favicon.ico' %}">
 </head>
 
 <body>
     <div id="page-container">
-        {% include "blogcore/navigation.html" %}
+        <div id="navigation">
+            <p><a id="blogname" href="https://github.com/noctdruid/blog">v0.2.0</a></p>
+            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">main</p></a></div>
+            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">about</p></a></div>
+            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">docs</p></a></div>
+            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">github</p></a></div>
+            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">search</p></a></div>
+        </div>
         <div id="content-wrap">
             <div id="content">
                 {% block content %}
                 {% endblock %}
             </div>
         </div>
-        <footer id="footer">
-            {% include "blogcore/footer.html" %}
+        <footer>
+            <a id="footlink">{% now 'Y-m-d' %} | {% now 'P' %} | {{ TIME_ZONE }}</a>
         </footer>
     </div>
 </body>

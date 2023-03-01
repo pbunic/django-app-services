@@ -25,7 +25,6 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     intro = models.TextField(max_length=1500)
     body = models.TextField()
-    footnotes = models.TextField(blank=True)
     tags = TaggableManager(
         verbose_name=_('Tags'),
         help_text=_('A comma-separated tags. '

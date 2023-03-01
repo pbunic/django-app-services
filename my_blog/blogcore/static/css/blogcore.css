@@ -3,8 +3,8 @@
 /* fonts, media */
 /* ################### */
 @font-face {
-    font-family: "Roboto-Light";
-    src: url("../fonts/Roboto-Light.ttf") format('truetype');
+    font-family: "Roboto-Medium";
+    src: url("../fonts/Roboto-Medium.ttf") format('truetype');
 }
 
 @font-face {
@@ -20,7 +20,7 @@
 /* globals, containers */
 /* ################### */
 body {
-    color: #fff;
+    color: #cccccc;
     background-color: #262626;
     margin: 0;
     padding: 0;
@@ -33,12 +33,13 @@ a {
 
 h1, h2, h3, h4 {
     margin: 0;
+    color: #f2f2f2;
     font-family: Roboto-Light, helvetica;
 }
 
 p, li {
     font-family: Roboto-Regular, helvetica;
-    color: #deddda;
+    color: #cccccc;
 }
 
 ::selection {
@@ -100,7 +101,7 @@ p, li {
     border-bottom-color: darkseagreen;
 }
 
-#footer {
+footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -128,6 +129,11 @@ p, li {
 #post-title {
     font-size: 28px;
     padding-top: 32px;
+}
+
+#post-acc-hr {
+    border-top: thin solid darkseagreen;
+    padding-top: 8px;
 }
 
 /* list grids */
@@ -194,6 +200,9 @@ p, li {
     margin: 0px;
 }
 
+#sharebars {
+    padding-top: 16px;
+}
 
 #share {
     width: 50%;
@@ -206,7 +215,7 @@ p, li {
 }
 
 #hrecommend {
-    padding-top: 8px;
+    padding-top: 24px;
     font-size: 16px;
 }
 
@@ -312,7 +321,7 @@ textarea {
 }
 .comment {
     padding: 10px;
-    background: #333333;
+    background: #242424;
     border-bottom-style: solid;
     border-bottom-width: thin;
     border-bottom-color: darkseagreen;
