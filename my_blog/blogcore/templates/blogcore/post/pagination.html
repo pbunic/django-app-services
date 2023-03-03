@@ -1,15 +1,15 @@
 <div class="pagination">
     <span class="step-links">
         {% if page.has_previous %}
-            <a class="pagenav" href="?page={{ page.previous_page_number }}">prev</a>
+            <a class="pagenav" href="?page={{ page.previous_page_number }}">PREV</a>
         {% else %}
-            <a class="nopage">prev</a>
+            <a class="nopage">PREV</a>
         {% endif %}
-            <span class="current">{{ page.number }} of {{ page.paginator.num_pages }}</span>
+            <p class="current">{{ page.number }} of {{ page.paginator.num_pages }}</p>
         {% if page.has_next %}
-            <a class="pagenav" href="?page={{ page.next_page_number }}">next</a>
+            <a class="pagenav" href="?page={{ page.next_page_number }}">NEXT</a>
         {% else %}
-            <a class="nopage">next</a>
+            <a class="nopage">NEXT</a>
         {% endif %}
     </span>
 </div>

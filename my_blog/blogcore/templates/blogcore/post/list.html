@@ -3,10 +3,6 @@
 
 {% block content %}
     <div id="postgrid-container">
-        {% if tag %}
-            <h2 id="topicfilter"># {{ tag.name|upper }}</h2><br>
-        {% endif %}
-
         {% for post in posts %}
             <div class="postgrid">
                 <h4 class="postgrid-title">

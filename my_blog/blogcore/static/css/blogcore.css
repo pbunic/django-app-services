@@ -1,4 +1,4 @@
-/* accent-color: darkseagreen */
+/* accent-color: lime */
 
 /* fonts, media */
 /* ################### */
@@ -17,43 +17,75 @@
     src: url("../fonts/FiraCode-Retina.ttf") format('truetype');
 }
 
-/* globals, containers */
+/* globals */
 /* ################### */
 body {
-    color: #cccccc;
-    background-color: #262626;
+    background-color: #1b1b1b;
     margin: 0;
     padding: 0;
 }
 
 a {
-    color: #fff;
+    color: #ececec;
     text-decoration: none;
 }
 
 h1, h2, h3, h4 {
     margin: 0;
-    color: #f2f2f2;
+    color: #ececec;
     font-family: Roboto-Light, helvetica;
 }
 
 p, li {
     font-family: Roboto-Regular, helvetica;
-    color: #cccccc;
+    color: #dbdbdb;
+}
+
+code {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: justify;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 8px;
+    color: lime;
+    background-color: #101010;
+    font-size: 14px;
+    border: 0.1rem solid lime;
+    overflow-x: scroll;
+}
+
+code::selection {
+    color: lime;
+    background: #303030;
 }
 
 ::selection {
-    color: rgb(177, 177, 177);
-    background: #181818;
+    color: lime;
+    background: #000000;
 }
+
+li {
+    padding-bottom: 4px;
+}
+
+blockquote {
+    background: #141414;
+    border-left: 4px solid lime;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* base.html divs */
+/* ################### */
 
 #page-container {
     position: relative;
     min-height: 100vh;
-}
-
-#content-wrap {
-    padding-bottom: 1.5rem;
 }
 
 #content {
@@ -67,38 +99,30 @@ p, li {
     position: sticky;
     margin-left: 15%;
     margin-right: 15%;
-    width: auto;
-    height: 5%;
-    border-bottom: thin solid darkseagreen;
-    border-right: thin solid darkseagreen;
-    border-left: thin solid darkseagreen;
-    background-color: #1a1a1a;
+    border-bottom: thin solid lime;
+    border-right: thin solid lime;
+    border-left: thin solid lime;
+    background-color: #121212;
     justify-content: space-evenly;
 }
 
 #blogname {
     font-family: FiraCode, monospace;
-    font-size: 14px;
-    color: darkseagreen;
-    background: #1a1a1a;
-}
-
-.singlenav {
     font-size: 16px;
-    font-family: FiraCode, monospace;
-    padding-bottom: 4px;
+    color: lime;
 }
 
 .navlink {
+    font-family: FiraCode, monospace;
     border-bottom-style: solid;
     border-bottom-width: thin;
-    border-bottom-color: #1a1a1a;
+    border-bottom-color: #121212;
 }
 
 .navlink:hover {
     border-bottom-style: solid;
     border-bottom-width: thin;
-    border-bottom-color: darkseagreen;
+    border-bottom-color: lime;
 }
 
 footer {
@@ -106,20 +130,20 @@ footer {
     bottom: 0;
     width: 100%;
     height: 1.5rem;
-    background-color: #1a1a1a;
+    background-color: #121212;
     border-top-style: solid;
     border-top-width: thin;
-    border-top-color: darkseagreen;
+    border-top-color: lime;
     text-align: center;
 }
 
 #footlink {
     font-family: FireCode, monospace;
     font-size: small;
-    color: darkseagreen;
+    color: lime;
 }
 
-/* post container */
+/* post lists (list.html) */
 /* ################### */
 #postcontainer {
     margin-left: 15%;
@@ -131,32 +155,36 @@ footer {
     padding-top: 32px;
 }
 
-#post-acc-hr {
-    border-top: thin solid darkseagreen;
+#postbreak {
+    border-top: thin solid lime;
     padding-top: 8px;
 }
 
+.sections {
+    padding-top: 12px;
+}
+
+
+
 /* list grids */
 /* ################### */
-#topicfilter {
+#taglist {
     font-family: FiraCode, monospace;
+    padding: 0;
 }
 
 #postgrid-container {
-    padding-top: 4%;
+    padding-top: 3%;
+    padding-bottom: auto;
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
 }
 
-#topicfilter {
-    padding:10px;
-    padding-left:0;
-}
-
 .postgrid {
-    background-color: #1a1a1a;
-    box-shadow: 2px 2px darkseagreen;
+    background-color: #121212;
+    border: solid 0.02rem lime;
+    border-radius: 0.5rem;
     margin-bottom: 20px;
     padding: 10px;
 }
@@ -164,7 +192,7 @@ footer {
 .postgrid-title {
     margin: 0;
     padding: 0;
-    border-bottom: 0.1rem solid darkseagreen;
+    border-bottom: 0.1rem solid rgb(79, 80, 79);
     font-size: 18px;
 }
 
@@ -194,7 +222,7 @@ footer {
 
 #date {
     display: inline;
-    color: darkseagreen;
+    color: lime;
     background: #19191a;
     font-family: monospace;
     margin: 0px;
@@ -226,46 +254,36 @@ footer {
 
 #totalcomm {
     padding-top: 8px;
-    color: darkseagreen;
+    color: lime;
     font-family: monospace;
     border-bottom-style: solid;
     border-bottom-width: thin;
-    border-bottom-color: darkseagreen;
+    border-bottom-color: lime;
 }
 
 /* pagination */
 .pagination {
+    font-family: FiraCode, monospace;
+    font-size: 14px;
     text-align: center;
     color: #f2f2f3;
-    padding-top: 8px;
-    padding-bottom: 4%;
+    padding-bottom: 3rem;
 }
 
 .pagenav {
     font-weight: bold;
-    background: #1a1a1a;
+    background: #121212;
     color: #fff;
-    text-transform: uppercase;
-    box-shadow: 1px 1px darkseagreen;
-    font-family: monospace;
-    font-size: 14px;
+    box-shadow: 1px 1px lime;
     padding: 4px;
     margin: 8px;
 }
 
-.current {
-    font-family: monospace;
-    font-size: 14px;
-}
-
 .nopage {
     font-weight: bold;
-    background: #1a1a1a;
-    color: #1a1a1a;
-    text-transform: uppercase;
-    box-shadow: 1px 1px darkseagreen;
-    font-family: monospace;
-    font-size: 14px;
+    background: #121212;
+    color: #121212;
+    box-shadow: 1px 1px lime;
     padding: 4px;
     margin: 8px;
 }
@@ -274,7 +292,7 @@ footer {
 label {
     float: left;
     clear: both;
-    color: darkseagreen;
+    color: lime;
     margin-bottom: 4px;
     font-family: monospace;
     font-size: 14px;
@@ -284,8 +302,8 @@ input, textarea {
     float: left;
     margin: 0 0 10px;
     color: #d9d9d9;
-    background: #19191a;
-    box-shadow: 0.1rem 0.1rem darkseagreen;
+    background: #121212;
+    box-shadow: 0.1rem 0.1rem lime;
     border: 0;
     padding: 6px 10px;
     font-size: 12px;
@@ -293,7 +311,7 @@ input, textarea {
 }
 input[type=submit] {
     font-weight: bold;
-    background: darkseagreen;
+    background: lime;
     color: #19191a;
     box-shadow: none;
     padding: 10px 20px;
@@ -318,19 +336,14 @@ textarea {
 /* comments */
 #commentform {
     display: inline-block;
+    padding-bottom: 24px;
 }
 .comment {
     padding: 10px;
     background: #242424;
-    border-bottom-style: solid;
-    border-bottom-width: thin;
-    border-bottom-color: darkseagreen;
-    border-right-style: solid;
-    border-right-width: thin;
-    border-right-color: darkseagreen;
-    border-left-style: solid;
-    border-left-width: thin;
-    border-left-color: darkseagreen;
+    border-bottom: solid thin lime;
+    border-right: solid thin lime;
+    border-left: solid thin lime;
 }
 .comment:nth-child(even) {
     color: #d9d9d9;
@@ -339,5 +352,5 @@ textarea {
 .comment .info {
     font-family: monospace;
     font-size: 12px;
-    color: darkseagreen;
+    color: lime;
 }

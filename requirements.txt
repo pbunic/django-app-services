@@ -4,5 +4,6 @@ django-taggit==3.1.0
 importlib-metadata==6.0.0
 Markdown==3.4.1
 psycopg2-binary==2.9.5
+python-dotenv==1.0.0
 sqlparse==0.4.3
 zipp==3.12.1

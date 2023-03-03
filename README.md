@@ -1,1 +1,2 @@
-## v0.2.0
+## blog
+Very simple django project for future tech-related blogging.

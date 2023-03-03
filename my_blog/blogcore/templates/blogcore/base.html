@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}{{ request.site.name }}{% endblock %}</title>
+    <title>{% block title %}{{ request.site }}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/blogcore.css' %}">
     <link rel="icon" href="{% static 'icons/favicon.ico' %}">
 </head>
@@ -13,18 +13,16 @@
 <body>
     <div id="page-container">
         <div id="navigation">
-            <p><a id="blogname" href="https://github.com/noctdruid/blog">v0.2.0</a></p>
+            <div class="singlenav"><p id="blogname">{{ request.site.name }}</p></div>
             <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">main</p></a></div>
             <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">about</p></a></div>
-            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">docs</p></a></div>
+            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">faq</p></a></div>
             <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">github</p></a></div>
             <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">search</p></a></div>
         </div>
-        <div id="content-wrap">
-            <div id="content">
-                {% block content %}
-                {% endblock %}
-            </div>
+        <div id="content">
+            {% block content %}
+            {% endblock %}
         </div>
         <footer>
             <a id="footlink">{% now 'Y-m-d' %} | {% now 'P' %} | {{ TIME_ZONE }}</a>
