@@ -5,27 +5,27 @@
 
 {% block content %}
 
-    <div id="postcontainer">
+    <div id="post-container">
 
         <!-- Post title, date and topics. -->
         <h2 id="post-title">{{ post.title }}</h2>
-        <div class="topics">
+        <div class="tags">
             {% for tag in post.tags.all %}
-                <a class="topic-rm" href="{% url 'blogcore:post_list_tag' tag.slug %}">
-                    <p class="topic">{{ tag.name|upper }}</p>
+                <a class="tag-place" href="{% url 'blogcore:post_list_tag' tag.slug %}">
+                    <p class="tag">{{ tag.name|upper }}</p>
                 </a>
                 {% if not forloop.last %}{% endif %}
             {% endfor %}
         </div>
 
-        <div id="datecont">
-            <p id="date">Published on {{ post.publish }}</p>
-        </div>
+        <p class="date">Published on {{ post.publish }}</p>
 
         <!-- Post introduction and body. -->
-        <div id="postbreak">
-            <h2 class="sections">Introduction</h2>
-            <p>{{ post.intro|markdown }}</p>
+        <div id="prepost">
+            <div id="introblock">
+                <h2 class="sections">Introduction</h2>
+                <p>{{ post.intro|markdown }}</p>
+            </div>
             <hr>
             <div class="sections">{{ post.body|markdown }}</div>
             <hr>
@@ -42,7 +42,7 @@
             </p>
         </div>
 
-        <h3 id="hrecommend"><i>Recommended blog posts:</i></h3>
+        <h3 id="recommend-post"><i>Recommended blog posts:</i></h3>
         {% for post in recommend %}
             <p>
                 <ul>
@@ -54,7 +54,7 @@
         {% endfor %}
 
         {% with comments.count as total_comments %}
-            <h3 id="totalcomm"><i>{{ total_comments }} comment{{ total_comments|pluralize }}</i></h3>
+            <h3 id="total-comments"><i>{{ total_comments }} comment{{ total_comments|pluralize }}</i></h3>
         {% endwith %}
         {% for comment in comments %}
             <div class="comment">

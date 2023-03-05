@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>{% block title %}{{ request.site }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/blogcore.css' %}">
     <link rel="icon" href="{% static 'icons/favicon.ico' %}">
 </head>
@@ -15,10 +16,10 @@
         <div id="navigation">
             <div class="singlenav"><p id="blogname">{{ request.site.name }}</p></div>
             <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">main</p></a></div>
-            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">about</p></a></div>
-            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">faq</p></a></div>
-            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">github</p></a></div>
-            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">search</p></a></div>
+            <div class="singlenav"><a href="#"><p class="navlink">about</p></a></div>
+            <div class="singlenav"><a href="#"><p class="navlink">faq</p></a></div>
+            <div class="singlenav"><a href="#"><p class="navlink">github</p></a></div>
+            <div class="singlenav"><a href="{% url 'blogcore:post_search' %}"><p class="navlink">search</p></a></div>
         </div>
         <div id="content">
             {% block content %}

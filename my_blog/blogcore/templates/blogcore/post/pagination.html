@@ -5,7 +5,7 @@
         {% else %}
             <a class="nopage">PREV</a>
         {% endif %}
-            <p class="current">{{ page.number }} of {{ page.paginator.num_pages }}</p>
+            <span class="current">{{ page.number }} of {{ page.paginator.num_pages }}</span>
         {% if page.has_next %}
             <a class="pagenav" href="?page={{ page.next_page_number }}">NEXT</a>
         {% else %}

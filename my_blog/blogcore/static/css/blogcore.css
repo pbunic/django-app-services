@@ -44,7 +44,6 @@ p, li {
 code {
     display: flex;
     flex-wrap: wrap;
-    text-align: justify;
     margin-left: 20%;
     margin-right: 20%;
     padding: 8px;
@@ -80,9 +79,32 @@ blockquote {
     padding-bottom: 2px;
 }
 
-/* base.html divs */
-/* ################### */
+img {
+    float: left;
+    margin-right: 16px;
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+}
 
+::-webkit-scrollbar {
+    height: 8px;
+    width: 4px;
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: lime;
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-corner {
+    background: #000;
+}
+
+/* base template */
+/* ################### */
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -113,16 +135,15 @@ blockquote {
 }
 
 .navlink {
+    margin-bottom: 1px;
     font-family: FiraCode, monospace;
-    border-bottom-style: solid;
-    border-bottom-width: thin;
-    border-bottom-color: #121212;
 }
 
 .navlink:hover {
     border-bottom-style: solid;
     border-bottom-width: thin;
     border-bottom-color: lime;
+    cursor: pointer;
 }
 
 footer {
@@ -143,45 +164,16 @@ footer {
     color: lime;
 }
 
-/* post lists (list.html) */
+/* post list and detail */
 /* ################### */
-#postcontainer {
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-#post-title {
-    font-size: 28px;
-    padding-top: 32px;
-}
-
-#postbreak {
-    border-top: thin solid lime;
-    padding-top: 8px;
-}
-
-.sections {
-    padding-top: 12px;
-}
-
-
-
-/* list grids */
-/* ################### */
-#taglist {
-    font-family: FiraCode, monospace;
-    padding: 0;
-}
-
-#postgrid-container {
+#post-container {
     padding-top: 3%;
-    padding-bottom: auto;
     margin-left: 10%;
     margin-right: 10%;
     width: 80%;
 }
 
-.postgrid {
+.post {
     background-color: #121212;
     border: solid 0.02rem lime;
     border-radius: 0.5rem;
@@ -189,44 +181,60 @@ footer {
     padding: 10px;
 }
 
-.postgrid-title {
-    margin: 0;
-    padding: 0;
+.post-title {
     border-bottom: 0.1rem solid rgb(79, 80, 79);
     font-size: 18px;
+    margin-bottom: 12px;
 }
 
-/* topics, publication */
-.topics {
+#prepost {
+    border-top: thin solid lime;
+}
+
+#introblock {
+    min-height: 100px;
+}
+
+#section-intro {
+    min-height: 80px;
+}
+
+.sections {
+    padding-top: 12px;
+}
+
+    /* tags, datepub */
+    /* ################### */
+.tags {
+    margin-bottom: 4px;
+    padding: 4px;
     display: flex;
-    justify-content: left;
+    flex-wrap: wrap;
 }
 
-.topic-rm {
-    margin: 0px 8px 0px 0px;
+.tag-place {
+    margin: 4px 8px 0px 0px;
 }
 
-.topic {
+.tag {
+    margin: 0;
+    padding: 8px;
     display: flex;
     color: #fff;
     border: 1px solid;
     border-radius: 5px;
-    padding: 2px;
     font-family: FiraCode, monospace;
     font-size: 14px;
 }
 
-#datecont {
-    display: block;
+.date {
+    color: lime;
+    font-family: monospace;
+    margin-top: 12px;
 }
 
-#date {
-    display: inline;
-    color: lime;
-    background: #19191a;
-    font-family: monospace;
-    margin: 0px;
-}
+    /* post detail enchantments */
+    /* ################### */
 
 #sharebars {
     padding-top: 16px;
@@ -242,7 +250,7 @@ footer {
     padding-right: 12px;
 }
 
-#hrecommend {
+#recommend-post {
     padding-top: 24px;
     font-size: 16px;
 }
@@ -252,7 +260,9 @@ footer {
     font-size: 16px;
 }
 
-#totalcomm {
+    /* comments */
+    /* ################### */
+#total-comments {
     padding-top: 8px;
     color: lime;
     font-family: monospace;
@@ -261,13 +271,39 @@ footer {
     border-bottom-color: lime;
 }
 
-/* pagination */
+#commentform {
+    display: inline-block;
+    padding-bottom: 24px;
+}
+.comment {
+    padding: 10px;
+    background: #242424;
+    border-bottom: solid thin lime;
+    border-right: solid thin lime;
+    border-left: solid thin lime;
+}
+.comment:nth-child(even) {
+    color: #d9d9d9;
+    background: #19191a;
+}
+.comment .info {
+    font-family: monospace;
+    font-size: 12px;
+    color: lime;
+}
+
+    /* pagination */
+    /* ################### */
 .pagination {
     font-family: FiraCode, monospace;
     font-size: 14px;
     text-align: center;
     color: #f2f2f3;
     padding-bottom: 3rem;
+}
+
+#step-links {
+    display: flex;
 }
 
 .pagenav {
@@ -288,7 +324,17 @@ footer {
     margin: 8px;
 }
 
-/* forms */
+/* share post via email */
+/* ################### */
+#inputs-loc {
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+    /* forms */
+    /* ################### */
 label {
     float: left;
     clear: both;
@@ -331,26 +377,4 @@ textarea {
     float: left;
     clear: both;
     padding-left: 8px; 
-}
-
-/* comments */
-#commentform {
-    display: inline-block;
-    padding-bottom: 24px;
-}
-.comment {
-    padding: 10px;
-    background: #242424;
-    border-bottom: solid thin lime;
-    border-right: solid thin lime;
-    border-left: solid thin lime;
-}
-.comment:nth-child(even) {
-    color: #d9d9d9;
-    background: #19191a;
-}
-.comment .info {
-    font-family: monospace;
-    font-size: 12px;
-    color: lime;
 }
