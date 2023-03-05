@@ -81,7 +81,7 @@ blockquote {
 
 img {
     float: left;
-    margin-right: 16px;
+    margin-right: 8px;
     height: 80px;
     width: 80px;
     border-radius: 10%;
@@ -192,11 +192,11 @@ footer {
 }
 
 #introblock {
-    min-height: 100px;
+    min-height: 140px;
 }
 
 #section-intro {
-    min-height: 80px;
+    min-height: 100px;
 }
 
 .sections {

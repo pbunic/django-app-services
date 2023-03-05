@@ -20,7 +20,7 @@
 
                 <p class="date">Published {{ post.publish }}</p>
 
-                <div id="introblock"><p>{{ post.intro|markdown }}</p></div>
+                <div id="section-intro"><p>{{ post.intro|markdown }}</p></div>
             </div>
         {% endfor %}
         {% include "blogcore/post/pagination.html" with page=posts %}
