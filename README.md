@@ -1,2 +1,2 @@
 ## blog
-Very simple django project for future tech-related blogging.
+This is skeleton for django blog project. Still work in progress.

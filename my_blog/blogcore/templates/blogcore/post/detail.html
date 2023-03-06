@@ -5,66 +5,40 @@
 
 {% block content %}
 
-    <div id="post-container">
+    <div class="post">
 
-        <!-- Post title, date and topics. -->
-        <h2 id="post-title">{{ post.title }}</h2>
+        <!-- Post title, tags and publishing date. -->
+        <h1>{{ post.title }}</h1>
         <div class="tags">
             {% for tag in post.tags.all %}
-                <a class="tag-place" href="{% url 'blogcore:post_list_tag' tag.slug %}">
-                    <p class="tag">{{ tag.name|upper }}</p>
-                </a>
-                {% if not forloop.last %}{% endif %}
+                <a href="{% url 'blogcore:post_list_tag' tag.slug %}">{{ tag.name|upper }}</a>
             {% endfor %}
         </div>
-
-        <p class="date">Published on {{ post.publish }}</p>
+        <p class="pubdate">Published: {{ post.publish }}</p>
 
         <!-- Post introduction and body. -->
-        <div id="prepost">
-            <div id="introblock">
-                <h2 class="sections">Introduction</h2>
-                <p>{{ post.intro|markdown }}</p>
-            </div>
-            <hr>
-            <div class="sections">{{ post.body|markdown }}</div>
-            <hr>
-        </div>
+        <h2>Introduction</h2>
+        <p>{{ post.intro|markdown }}</p>
+        <p>{{ post.body|markdown }}</p>
 
-        <!-- Share, recommendations and comments. -->
-        <div id="sharebars">
-            <p id="share">
-                <a href="{% url 'blogcore:post_share' post.slug %}">share via email</a>
-                <b>|</b>
-                <a href="#">newsletters</a>
-                <b>|</b>
-                <a href="{% url 'blogcore:post_feed' %}">feed</a>
-            </p>
-        </div>
-
-        <h3 id="recommend-post"><i>Recommended blog posts:</i></h3>
+        <!-- Misc. -->
+        <a href="{% url 'blogcore:post_share' post.slug %}">share post via email</a>
+        <a href="#">subscribe to the newsletters</a>
+        <h3>Check out other similar blog posts:</h3>
         {% for post in recommend %}
-            <p>
-                <ul>
-                    <li><a id="postlink" href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-                </ul>
-            </p>
-        {% empty %}
-            <p>There are no similar posts.</p>
+            <ul><li><a id="postlink" href="{{ post.get_absolute_url }}">{{ post.title }}</a></li></ul>
         {% endfor %}
-
         {% with comments.count as total_comments %}
-            <h3 id="total-comments"><i>{{ total_comments }} comment{{ total_comments|pluralize }}</i></h3>
+            <h3>{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
         {% endwith %}
         {% for comment in comments %}
-            <div class="comment">
-                <p class="info">by {{ comment.name }} | {{ comment.created }}</p>
-                {{ comment.body|linebreaks }}
+            <div class="comments">
+                <p class="comment-author">by {{ comment.name }} | {{ comment.created }}</p>
+                <p>{{ comment.body|linebreaks }}</p>
             </div>
         {% empty %}
-            <p>There are no comments.</p>
+            <p>There are no comments yet, be the first.</p>
         {% endfor %}
-
         {% include "blogcore/post/includes/comment_form.html" %}
 
     </div>

@@ -1,7 +1,8 @@
 {% extends "blogcore/base.html" %}
 
 {% block content %}
-<div id="inputs-loc">
+
+<div class="comment">
     {% if comment %}
         <h2>Your comment has been added.</h2>
         <p><a href="{{ post.get_absolute_url }}">Return to the post.</a></p>
@@ -9,4 +10,5 @@
         {% include "blogcore/post/includes/comment_form.html" %}
     {% endif %}
 </div>
+
 {% endblock %}

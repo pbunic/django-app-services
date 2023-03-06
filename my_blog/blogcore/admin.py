@@ -5,9 +5,6 @@ from django.forms import TextInput
 from .models import Post, Comment
 
 
-admin.site.unregister(Group)
-
-
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'publish', 'status']

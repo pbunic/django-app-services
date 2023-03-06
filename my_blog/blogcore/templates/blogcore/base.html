@@ -1,6 +1,4 @@
 {% load static %}
-{% load tz %}
-{% get_current_timezone as TIME_ZONE %}
 
 <!DOCTYPE html>
 <html>
@@ -12,22 +10,42 @@
 </head>
 
 <body>
-    <div id="page-container">
-        <div id="navigation">
-            <div class="singlenav"><p id="blogname">{{ request.site.name }}</p></div>
-            <div class="singlenav"><a href="{% url 'blogcore:post_list' %}"><p class="navlink">main</p></a></div>
-            <div class="singlenav"><a href="#"><p class="navlink">about</p></a></div>
-            <div class="singlenav"><a href="#"><p class="navlink">faq</p></a></div>
-            <div class="singlenav"><a href="#"><p class="navlink">github</p></a></div>
-            <div class="singlenav"><a href="{% url 'blogcore:post_search' %}"><p class="navlink">search</p></a></div>
+    <div class="page">
+        <!-- Navigation -->
+        <div class="topnav" id="navResponse">
+            <span>{{ request.site.name }}</span>
+            <a href="{% url 'blogcore:post_list' %}" class="navlink">blog</a>
+            <a href="{% url 'blogcore:post_search' %}" class="navlink">search</a>
+            <a href="javascript:void(0);" class="menuicon" onclick="menuBar()">
+                <svg viewBox="0 0 100 50" width="32" height="32" class="menustyle" fill="#dbdbdb">
+                    <rect width="100" height="8"></rect>
+                    <rect y="30" width="100" height="8"></rect>
+                    <rect y="60" width="100" height="8"></rect>
+                </svg>
+            </a>
+            </div>
         </div>
+
+        <!-- Content -->
         <div id="content">
             {% block content %}
             {% endblock %}
         </div>
-        <footer>
-            <a id="footlink">{% now 'Y-m-d' %} | {% now 'P' %} | {{ TIME_ZONE }}</a>
-        </footer>
+
+        <!-- Footer -->
+        <footer></footer>
     </div>
+
+<script>
+function menuBar() {
+    var x = document.getElementById("navResponse");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
 </body>
 </html>
