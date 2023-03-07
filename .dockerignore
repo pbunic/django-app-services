@@ -1,0 +1,6 @@
+.venv
+.git
+.github
+.gitignore
+.env.template
+scripts
