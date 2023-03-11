@@ -1,0 +1,50 @@
+name: Django CI
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches: ["master", "dev"]
+  pull_request:
+    branches: ["master", "dev"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
+
+    services:
+      db:
+        image: postgres
+        env:
+          POSTGRES_DB: blog
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+          POSTGRES_HOST: localhost
+        ports:
+          - 5432:5432
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
+      - name: Flake Linting
+        run: |
+          python3 -m pip install flake8
+          python3 -m flake8 ./my_blog --max-line-length=127 --exclude=migrations -v
+      - name : Set Env
+        run: |
+          cd scripts && chmod +x make_env.sh
+          ./make_env.sh && cd ..
+      - name: Run Tests
+        run: |
+          python3 ./my_blog/manage.py test blogcore

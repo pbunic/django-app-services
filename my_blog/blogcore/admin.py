@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
 from django.db import models
 from django.forms import TextInput
 from .models import Post, Comment
