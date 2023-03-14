@@ -14,7 +14,9 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN apt install netcat-openbsd -y
 
+COPY ./entrypoint.sh .
+RUN chmod +x /app/entrypoint.sh
+
 COPY . .
 
-RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

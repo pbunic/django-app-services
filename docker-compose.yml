@@ -2,9 +2,9 @@ version: "3.11"
 
 services:
   app:
-    container_name: blog-django
+    container_name: dev-blog-django
     build: .
-    command: python3 ./my_blog/manage.py runserver 0.0.0.0:8000
+    command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - ./:/app
     env_file:
@@ -14,18 +14,14 @@ services:
     depends_on:
       - db
   db:
-    container_name: blog-postgres
+    container_name: dev-blog-postgres
     image: postgres:15.2
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - dev_postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_HOST=${DB_HOST}
-      - POSTGRES_PORT=${DB_PORT}
-    ports:
-      - ${DB_PORT}:${DB_PORT}
 
 volumes:
-  postgres_data:
+  dev_postgres_data:

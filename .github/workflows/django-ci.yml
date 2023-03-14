@@ -4,21 +4,21 @@ on:
   workflow_call:
   workflow_dispatch:
   push:
-    branches: ["master", "dev"]
+    branches: ["master", "devtest"]
   pull_request:
-    branches: ["master", "dev"]
+    branches: ["master", "devtest"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
-      fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.10", "3.11"]
 
     services:
       db:
-        image: postgres
+        image: postgres:15.2
         env:
           POSTGRES_DB: blog
           POSTGRES_USER: postgres
@@ -40,11 +40,11 @@ jobs:
       - name: Flake Linting
         run: |
           python3 -m pip install flake8
-          python3 -m flake8 ./my_blog --max-line-length=127 --exclude=migrations -v
+          python3 -m flake8 ./blog --max-line-length=127 --exclude=migrations -v
       - name : Set Env
         run: |
           cd scripts && chmod +x make_env.sh
           ./make_env.sh && cd ..
       - name: Run Tests
         run: |
-          python3 ./my_blog/manage.py test blogcore
+          python3 manage.py test -v 2

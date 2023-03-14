@@ -1,7 +1,7 @@
 #!/bin/bash
 # Change the accent color of blog.
 
-input_file="../my_blog/blogcore/static/css/blogcore.css"
+input_file="../blog/static/css/blog.css"
 colors=("darkseagreen" "darksalmon" "darkviolet" "darkkhaki" \
 "darkturquoise" "darkgoldenrod" "crimson" "lime" "slateblue" "fuchsia")
 current_color=$(cat $input_file | head -n1 | cut -d " " -f 3)

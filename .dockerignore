@@ -1,6 +1,9 @@
+__pycache__
+*.pyc
+.env
+.env.template
 .venv
 .git
 .github
 .gitignore
-.env.template
 scripts

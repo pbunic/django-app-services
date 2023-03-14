@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+
+    <div class="post">
+
+        <!-- Post title, tags and publishing date. -->
+        <h1>{{ post.title }}</h1>
+        <div class="tags">
+            {% for tag in post.tags.all %}
+                <a href="{% url 'blog:post_list_tag' tag.slug %}">{{ tag.name|upper }}</a>
+            {% endfor %}
+        </div>
+        <p class="pubdate">Published: {{ post.publish }}</p>
+
+        <!-- Post introduction and body. -->
+        <h2>Introduction</h2>
+        <p>{{ post.intro|markdown }}</p>
+        <p>{{ post.body|markdown }}</p>
+
+        <!-- Misc. -->
+        <a href="{% url 'blog:post_share' post.slug %}">share post via email</a>
+        <a href="#">subscribe to the newsletters</a>
+        <h3>Check out other similar blog posts:</h3>
+        {% for post in recommend %}
+            <ul><li><a id="postlink" href="{{ post.get_absolute_url }}">{{ post.title }}</a></li></ul>
+        {% endfor %}
+        {% with comments.count as total_comments %}
+            <h3>{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
+        {% endwith %}
+        {% for comment in comments %}
+            <div class="comments">
+                <p class="comment-author">by {{ comment.name }} | {{ comment.created }}</p>
+                <p>{{ comment.body|linebreaks }}</p>
+            </div>
+        {% empty %}
+            <p>There are no comments yet, be the first.</p>
+        {% endfor %}
+        {% include "blog/post/includes/comment_form.html" %}
+
+    </div>
+
+{% endblock %}
