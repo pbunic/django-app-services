@@ -3,7 +3,7 @@
 
 env_var="../.env"
 
-echo "DEBUG=True" >> $env_var
+echo "DEBUG=True" > $env_var
 echo "SECRET_KEY=secret" >> $env_var
 echo "DJANGO_SETTINGS_MODULE=config.settings.development" >> $env_var
 echo "ALLOWED_HOSTS=localhost, 0.0.0.0" >> $env_var

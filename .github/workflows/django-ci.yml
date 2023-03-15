@@ -43,8 +43,8 @@ jobs:
           python3 -m flake8 ./blog --max-line-length=127 --exclude=migrations -v
       - name : Set Env
         run: |
-          cd scripts && chmod +x make_env.sh
-          ./make_env.sh && cd ..
+          cd scripts && chmod +x test_env.sh
+          ./test_env.sh && cd ..
       - name: Run Tests
         run: |
           python3 manage.py test -v 2
