@@ -1,13 +1,15 @@
 from decouple import config
 
-settings_env = config('DJANGO_SETTINGS_MODULE')
-production = bool(settings_env == 'production')
 
-if production:
+is_production = bool(config('DJANGO_SETTINGS_MODULE') == 'config.settings.production')
+
+if is_production:
     try:
         from .celery import app as celery_app
         __all__ = ('celery_app',)
     except ImportError as exc:
         raise ImportError(
-            "Couldn't import celery. Something is improperly configured."
+            "Couldn't import celery. Something is improperly configured. "
+            "Checkout out if celery is installed and other dependencies, and"
+            "check if your virtual environment is activated."
         ) from exc
