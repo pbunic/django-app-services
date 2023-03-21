@@ -10,6 +10,6 @@ if is_production:
     except ImportError as exc:
         raise ImportError(
             "Couldn't import celery. Something is improperly configured. "
-            "Checkout out if celery is installed and other dependencies, and"
+            "Checkout out if celery is installed and other requirements and/or"
             "check if your virtual environment is activated."
         ) from exc
