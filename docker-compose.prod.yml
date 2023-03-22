@@ -2,7 +2,6 @@ version: "3.11"
 
 services:
   app:
-    container_name: blog-django
     build: .
     restart: always
     command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
@@ -14,11 +13,10 @@ services:
       - static_volume:/app/staticfiles
       - media_volume:/app/mediafiles
     depends_on:
-      - db
       - redis
+      - db
 
   db:
-    container_name: blog-postgres
     image: postgres:15.2
     restart: always
     volumes:
@@ -29,11 +27,9 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
 
   redis:
-    container_name: blog-redis
     image: redis:7
 
   celery:
-    container_name: blog-celery
     build: .
     restart: always
     command: celery -A config worker -l info
@@ -47,11 +43,8 @@ services:
       - app
 
   nginx:
-    container_name: blog-nginx
     build: ./nginx
     restart: always
-    environment:
-      - NGINX_PORT=${NGINX_PORT}
     ports:
       - ${NGINX_PORT}:80
     volumes:
