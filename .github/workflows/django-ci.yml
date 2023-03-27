@@ -1,4 +1,4 @@
-name: Build
+name: Django CI
 
 on:
   workflow_call:
@@ -46,9 +46,10 @@ jobs:
           python3 -m flake8 ./blog --max-line-length=127 --exclude=migrations -v
 
       - name: Set Environment Variables
+        working-directory: ./scripts
         run: |
-          cd scripts && chmod +x test_env.sh
-          ./test_env.sh && cd ..
+          chmod +x test_env.sh
+          ./test_env.sh
 
       - name: Run Tests
         run: |
