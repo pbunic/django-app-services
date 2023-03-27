@@ -1,19 +1,22 @@
 name: Django CI
 
 on:
-  workflow_call:
   push:
-    branches: ["master", "devtest"]
+    branches:
+      - master
+      - devtest
+      - 'feature/**'
   pull_request:
-    branches: ["master", "devtest"]
+    branches:
+      - devtest
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
-    continue-on-error: true
     strategy:
       matrix:
-        python-version: ["3.10", "3.11"]
+        python-version: ["3.9", "3.10", "3.11"]
 
     services:
       db:
@@ -45,7 +48,7 @@ jobs:
           python3 -m pip install flake8
           python3 -m flake8 ./blog --max-line-length=127 --exclude=migrations -v
 
-      - name: Set Environment Variables
+      - name: Set Test Environment
         working-directory: ./scripts
         run: |
           chmod +x test_env.sh
