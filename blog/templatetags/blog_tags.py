@@ -12,6 +12,7 @@ extensions_config = {
     },
 }
 
+
 @register.filter()
 @stringfilter
 def f_markdown(value):
