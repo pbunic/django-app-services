@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from mdeditor.fields import MDTextField
 from taggit.managers import TaggableManager
 
 
@@ -23,7 +24,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     intro = models.TextField(max_length=1500)
-    body = models.TextField()
+    body = MDTextField()
     tags = TaggableManager(
         verbose_name=_('Tags'),
         help_text=_('A comma-separated tags. '

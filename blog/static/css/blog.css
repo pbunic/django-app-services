@@ -7,16 +7,63 @@
     src: url("../fonts/Roboto-Regular.ttf") format('truetype');
 }
 
+@font-face {
+    font-family: "Hack-Regular";
+    src: url("../fonts/Hack-Regular.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: "Firacode-Retina";
+    src: url("../fonts/Firacode-Retina.ttf") format('truetype');
+}
+
 /* globals */
 /* ################### */
 body {
     background-color: #1b1b1b;
-    border: 0.1rem solid lime;
-    margin: 0;
-    padding: 0;
+    border: 0.1rem solid gray;
+    margin: 0 15px;
+    padding: 0 15px;
 }
 
-h1, h2, h3, h4, p, ul, ol, li, a, span {
+h1, h2, h3, h4 {
     color: #dbdbdb;
-    font-family: Roboto-Regular, helvetica;
+    font-family: FiraCode-Retina, Roboto-Regular;
+}
+
+p, ul, ol, li, a, span {
+    color: #dbdbdb;
+    font-family: Roboto-Regular, FiraCode-Retina;
+}
+
+code {
+    font-family: Hack-Regular, FiraCode-Retina;
+    font-size: 14px;
+}
+
+.codehilite {
+    border: 1px solid gray;
+    text-align: left;
+    margin-right: 20%;
+    margin-left: 20%;
+    padding-left: 8px;
+    padding-bottom: 8px;
+    overflow-x: scroll;
+}
+
+.codehilite .codehilitetable {
+    font-family: Hack-Regular, FiraCode-Retina;
+    font-size: 14px;
+}
+
+.codehilite .codehilitetable .linenos .linenodiv {
+    border-right: 1px solid gray;
+}
+
+.codehilite .codehilitetable .linenos {
+    padding-right: 8px;
+}
+
+.codehilite span {
+    font-family: Hack-Regular, FiraCode-Retina;
 }

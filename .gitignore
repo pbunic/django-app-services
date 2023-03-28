@@ -128,5 +128,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Django staticfiles in project root
+# Django staticfiles and mediafiles in project root
 staticfiles/
+mediafiles/
