@@ -20,10 +20,11 @@
 /* globals */
 /* ################### */
 body {
-    background-color: #1b1b1b;
-    border: 0.1rem solid gray;
-    margin: 0 15px;
-    padding: 0 15px;
+    background-color: #010814;
+    border-left: 0.1rem solid gray;
+    border-right: 0.1rem solid gray;
+    margin: 0 15px 0 15px;
+    padding: 0 15px 0 15px;
 }
 
 h1, h2, h3, h4 {

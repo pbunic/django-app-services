@@ -25,10 +25,12 @@
         <p>{{ post.body | f_markdown | safe }}</p>
 
         <!-- Misc. -->
-        <h3>Check out other similar blog posts:</h3>
-        {% for post in recommend %}
-            <ul><li><a id="postlink" href="{{ post.get_absolute_url }}">{{ post.title }}</a></li></ul>
-        {% endfor %}
+        {% if recommend %}
+            <h3>Check out other similar blog posts:</h3>
+            {% for post in recommend %}
+                <ul><li><a id="postlink" href="{{ post.get_absolute_url }}">{{ post.title }}</a></li></ul>
+            {% endfor %}
+        {% endif %}
         {% with comments.count as total_comments %}
             <h3>{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
         {% endwith %}

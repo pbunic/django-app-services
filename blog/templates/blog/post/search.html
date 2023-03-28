@@ -15,7 +15,7 @@
         </h3>
         {% for post in results %}
             <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-            {{ post.body|markdown|truncatewords_html:20 }}
+            <p>{{ post.intro }}</p>
         {% empty %}
             <p>There are no results for your search.</p>
         {% endfor %}
