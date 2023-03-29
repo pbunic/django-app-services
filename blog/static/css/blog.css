@@ -13,8 +13,8 @@
 }
 
 @font-face {
-    font-family: "Firacode-Retina";
-    src: url("../fonts/Firacode-Retina.ttf") format('truetype');
+    font-family: "FiraCode-Retina";
+    src: url("../fonts/FiraCode-Retina.ttf") format('truetype');
 }
 
 /* globals */
@@ -35,6 +35,20 @@ h1, h2, h3, h4 {
 p, ul, ol, li, a, span {
     color: #dbdbdb;
     font-family: Roboto-Regular, FiraCode-Retina;
+}
+
+table thead tr th {
+    color: #dbdbdb;
+    background-color: rgb(82, 82, 82);
+    font-family: FiraCode-Retina, Hack-Regular;
+    padding: 2px 8px 2px 4px;
+}
+
+table tbody tr td {
+    color: #dbdbdb;
+    background-color: rgb(100, 100, 100);
+    font-family: FiraCode-Retina, Hack-Regular;
+    padding: 2px 8px 2px 4px;
 }
 
 code {
@@ -67,4 +81,20 @@ code {
 
 .codehilite span {
     font-family: Hack-Regular, FiraCode-Retina;
+}
+
+.codehilitetable, .codehilitetable tbody tr td {
+    background: #0d1117;
+}
+
+.toc {
+    display: inline-table;
+    background: #0d1117;
+    border: 0.1rem solid darkgray;
+    border-radius: 1rem;
+}
+
+.toc ul {
+    padding-left: 25px;
+    padding-right: 8px;
 }

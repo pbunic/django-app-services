@@ -136,7 +136,7 @@ MDEDITOR_CONFIGS = {
         # image upload format type
         'upload_image_formats': ["jpg", "jpeg", "gif", "png", "bmp", "webp", "svg"],
         'image_folder': 'editor',  # image save the folder name
-        'theme': 'default',  # edit box theme, dark / default
+        'theme': 'dark',  # edit box theme, dark / default
         'preview_theme': 'default',  # Preview area theme, dark / default
         'editor_theme': 'pastel-on-dark',  # edit area theme, pastel-on-dark / default
         'toolbar_autofixed': False,  # Whether the toolbar capitals
