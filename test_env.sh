@@ -1,7 +1,7 @@
 #!/bin/bash
 # Set env variables for testing purpose.
 
-env_var="../.env"
+env_var=".env"
 
 echo "DEBUG=True" > $env_var
 echo "SECRET_KEY=secret" >> $env_var

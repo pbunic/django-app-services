@@ -49,7 +49,6 @@ jobs:
           python3 -m flake8 ./blog --max-line-length=127 --exclude=migrations -v
 
       - name: Set Test Environment
-        working-directory: ./scripts
         run: |
           chmod +x test_env.sh
           ./test_env.sh
