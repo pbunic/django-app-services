@@ -5,27 +5,34 @@
 <head>
     <title>{% block title %}{{ request.site }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'icons/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link rel="stylesheet" href="{% static 'css/codehilite_styles.css' %}">
-    <link rel="icon" href="{% static 'icons/favicon.ico' %}">
+    <script src="{% static 'js/nav.js' %}"></script>
 </head>
 
 <body>
     <div class="page">
         <!-- Navigation -->
-        <div class="topnav" id="navResponse">
-            <span>{{ request.site.name }}</span>
-            <a href="{% url 'blog:post_list' %}" class="navlink">blog</a>
-            <a href="{% url 'blog:post_search' %}" class="navlink">search</a>
-            <a href="javascript:void(0);" class="menuicon" onclick="menuBar()">
-                <svg viewBox="0 0 100 50" width="32" height="32" class="menustyle" fill="#dbdbdb">
-                    <rect width="100" height="8"></rect>
-                    <rect y="30" width="100" height="8"></rect>
-                    <rect y="60" width="100" height="8"></rect>
-                </svg>
-            </a>
+        <div class="responsive-nav">
+            <div class="responsive-nav-part-one">
+                <span class="name">{{ request.site.name }} </span><span class="skull">☠</span>
+            </div>
+            <div class="responsive-nav-part-two">
+                <span class="menuicon" onclick="openNav()">&#9776;</span>
             </div>
         </div>
+
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="" class="navlink">Home</a>
+                <a href="" class="navlink">About</a>
+                <a href="{% url 'blog:post_list' %}" class="navlink">Blog</a>
+                <a href="" class="navlink">Services</a>
+            </div>
+        </div>
+        <hr>
 
         <!-- Content -->
         <div id="content">
@@ -36,17 +43,6 @@
         <!-- Footer -->
         <footer></footer>
     </div>
-
-<script>
-function menuBar() {
-    var x = document.getElementById("navResponse");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-</script>
 
 </body>
 </html>

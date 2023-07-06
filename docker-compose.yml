@@ -1,12 +1,12 @@
 version: "3.8"
 
 services:
-  app:
-    container_name: dev-blog-django
+  web:
+    container_name: dev-web
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./:/app
+      - ./:/web
     env_file:
       - ./.env
     ports:
@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
   db:
-    container_name: dev-blog-postgres
+    container_name: dev-db
     image: postgres:15.2
     volumes:
       - dev_postgres_data:/var/lib/postgresql/data/
