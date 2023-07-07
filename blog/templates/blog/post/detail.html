@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% load blog_tags %}
 {% load tz %}
+{% load static %}
 
 {% block title %}{{ post.title }}{% endblock %}
 
@@ -16,13 +17,28 @@
             {% endfor %}
         </div>
         <p class="pubdate">Published: {{ post.publish | localtime }}</p>
-        <a href="{% url 'blog:post_share' post.slug %}">email</a>
-        <a href="#">newsletters</a>
+        <div class="sharing">
+            <a href="{% url 'blog:post_share' post.slug %}">
+                <img src="{% static 'icons/mail.svg' %}" alt="mail">
+            </a>
+            <a href="#">
+                <img src="{% static 'icons/rss-square.svg' %}" alt="rss">
+            </a>
+            <a href="#">
+                <img src="{% static 'icons/twitter-square.svg' %}" alt="twitter">
+            </a>
+            <a href="#">
+                <img src="{% static 'icons/reddit-square.svg' %}" alt="reddit">
+            </a>
+            <a href="#">
+                <img src="{% static 'icons/hacker-news-square.svg' %}" alt="hn">
+            </a>
+        </div>
 
         <!-- Post introduction and body. -->
-        <h2>Introduction</h2>
         <p>{{ post.intro | f_markdown | safe }}</p>
         <p>{{ post.body | f_markdown | safe }}</p>
+        <hr>
 
         <!-- Misc. -->
         {% if recommend %}
