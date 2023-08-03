@@ -26,10 +26,11 @@
         <div id="myNav" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="overlay-content">
-                <a href="" class="navlink">Home</a>
-                <a href="" class="navlink">About</a>
+                <a href="{% url 'blog:homepage' %}" class="navlink">Home</a>
+                <a href="{% url 'blog:about_page' %}" class="navlink">About</a>
+                <a href="{% url 'blog:soc_page' %}" class="navlink">SOC</a>
                 <a href="{% url 'blog:post_list' %}" class="navlink">Blog</a>
-                <a href="" class="navlink">Services</a>
+                <a href="{% url 'blog:services_page' %}" class="navlink">Services</a>
             </div>
         </div>
         <hr>

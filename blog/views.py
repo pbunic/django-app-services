@@ -13,6 +13,21 @@ from .forms import EmailPostForm, CommentForm, SearchForm
 from taggit.models import Tag
 
 
+def homepage(request, tag_slug=None):
+    """Landing page."""
+    return render(request, 'blog/home.html')
+
+
+def about_page(request, tag_slug=None):
+    """Informations page."""
+    return render(request, 'blog/about.html')
+
+
+def soc_page(request, tag_slug=None):
+    """SOC page."""
+    return render(request, 'blog/soc.html')
+
+
 def post_list(request, tag_slug=None):
     """Show posts and related data."""
     post_list = Post.published.all()
@@ -22,7 +37,7 @@ def post_list(request, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         post_list = post_list.filter(tags__in=[tag])
 
-    paginator = Paginator(post_list, 3)
+    paginator = Paginator(post_list, 9)
     page_number = request.GET.get('page', 1)
 
     try:
@@ -107,3 +122,8 @@ def post_search(request):
             ).filter(rank__gte=0.3).order_by('-rank')
 
     return render(request, 'blog/post/search.html', {'form': form, 'query': query, 'results': results})
+
+
+def services_page(request, tag_slug=None):
+    """Services page."""
+    return render(request, 'blog/services.html')

@@ -35,9 +35,11 @@
             </a>
         </div>
 
-        <!-- Post introduction and body. -->
-        <p>{{ post.intro | f_markdown | safe }}</p>
+        <!-- Post cover image and body. -->
+        <img src="{{ post.img_cover }}" alt="Post header image" class="coverimg">
+        <h3>TABLE OF CONTENTS:</h3>
         <p>{{ post.body | f_markdown | safe }}</p>
+        <br>
         <hr>
 
         <!-- Misc. -->
@@ -52,7 +54,7 @@
         {% endwith %}
         {% for comment in comments %}
             <div class="comments">
-                <p class="comment-author">by {{ comment.name }} | {{ comment.created }}</p>
+                <b><p class="comment-author">by {{ comment.name }} | {{ comment.created }}</p></b>
                 <p>{{ comment.body|linebreaks }}</p>
             </div>
         {% empty %}
