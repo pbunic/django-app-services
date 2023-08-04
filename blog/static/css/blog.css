@@ -76,14 +76,14 @@ body {
     font-size:48px;
 }
 h1 {
-    color:#dbdbdb;
+    color:#bdbbbb;
     font-family:FiraCode-Retina,Roboto-Regular;
     text-align:center;
     padding-top:15px;
     padding-bottom:15px;
 }
 h2, h3, h4 {
-    color:#dbdbdb;
+    color:#bdbbbb;
     font-family:Roboto-Regular,FiraCode-Retina;
     margin:48px 0 24px 0;
 }
@@ -97,10 +97,9 @@ img {
     padding-bottom:20px;
 }
 p, ul, ol, li, a, span {
-    color: #dbdbdb;
+    color: #bdbbbb;
     font-family: Roboto-Regular, FiraCode-Retina;
 }
-
 .postgrid {
     display:grid;
     grid: auto auto / auto;
@@ -113,12 +112,11 @@ p, ul, ol, li, a, span {
     min-width:33.3%;
     border-radius:12px;
     padding:12px;
-    background-image:linear-gradient(to bottom,rgba(4,22,54,0.8),rgba(11,20,38,0.8)), url("../effects/blackhole.avif");
+    background-image:linear-gradient(to top,rgba(1,22,33,0.8),rgba(6,17,23,0.8)), url("../effects/mobile-texture.avif");
     background-size:cover;
 }
 .postgrid h3 {margin:10px 0 10px 0; text-align:left;}
 .postgrid h3 a {text-decoration:none; font-family:FiraCode-Retina,Roboto-Regular;}
-
 .postgrid date {
     font-family:Hack-Regular;
     font-size:8px;
@@ -135,15 +133,8 @@ p, ul, ol, li, a, span {
     margin-top:4px;
     margin-right:4px;
 }
-.tags-date p {
-    font-family:Hack-Regular,FiraCode-Retina;
-    font-size:12px;
-}
-
-
-.sharing a {
-    text-decoration:none;
-}
+.tags-date p {font-family:Hack-Regular,FiraCode-Retina;font-size:12px;}
+.sharing a {text-decoration:none;}
 .sharing img {
     display:inline;
     padding:0;
@@ -291,4 +282,9 @@ textarea {
     }
     table {width:unset;}
     .postgrid {grid: auto auto / auto auto auto;}
+    .singlepost {
+        background-image:linear-gradient(to bottom,rgba(4,22,54,0.8),rgba(11,20,38,0.8)), url("../effects/blackhole.avif");
+        background-size:cover;
+    }
+    .singlepost:hover {background-image:linear-gradient(to top,rgba(4,22,54,0.3),rgba(168,50,129,0.3)), url("../effects/blackhole.avif");transform: scale(105%);}
 }

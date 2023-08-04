@@ -1,1 +1,12 @@
 {% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <audio id="sfSound">
+        <source src="{% static 'effects/opening.mp3' %}"></source>
+        Your browser can't handle signal.
+    </audio>
+    <script src="{% static 'js/home.js' %}"></script>
+
+{% endblock %}
