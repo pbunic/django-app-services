@@ -1,6 +1,23 @@
 // Get the grid container element
 const gridContainer = document.getElementById("grid-container");
 
+// Calculate fixed-width
+function calculateWidth() {
+    const divWidth = gridContainer.offsetWidth;
+    const calculatedWidth = (divWidth - 120) / 3
+    return calculatedWidth
+}
+
+function updateRootVar() {
+    const resultVar = calculateWidth();
+    document.documentElement.style.setProperty("--pg-width", `${resultVar}px`);
+}
+
+updateRootVar();
+window.addEventListener("resize", updateRootVar);
+
+
+// Calculate largest hight and assign to containers
 // Get all grid items within the container
 const gridItems = gridContainer.children;
 

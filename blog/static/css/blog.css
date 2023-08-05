@@ -21,26 +21,11 @@ body {
 }
 .name {font-size:24px;}
 .skull {font-size:32px;}
-.menuicon {
-    font-size:32px;
-    cursor:pointer;
-}
-.responsive-nav {
-    display:flex;
-    align-content:space-evenly;
-}
-.responsive-nav-part-one {
-    display:inline-block;
-    width:100%;
-}
-.responsive-nav-part-two {
-    display:flex;
-    width:auto;
-}
-.responsive-nav-part-two .menuicon {
-    text-align:right;
-    width:100%;
-}
+.menuicon {font-size:32px;cursor:pointer;}
+.responsive-nav {display:flex;align-content:space-evenly;}
+.responsive-nav-part-one {display:inline-block;width:100%;}
+.responsive-nav-part-two {display:flex;width:auto;}
+.responsive-nav-part-two .menuicon {text-align:right;width:100%;}
 .overlay {
     height:0%;
     width:100%;
@@ -59,7 +44,6 @@ body {
     text-align:center;
     margin-top:30px;
 }
-
 .overlay a {
     font-size:24px;
     padding:8px;
@@ -100,6 +84,9 @@ p, ul, ol, li, a, span {
     color: #bdbbbb;
     font-family: Roboto-Regular, FiraCode-Retina;
 }
+.root {
+    --pg-width:unset;
+}
 .postgrid {
     display:grid;
     grid: auto auto / auto;
@@ -109,7 +96,6 @@ p, ul, ol, li, a, span {
     padding-bottom:32px;
 }
 .singlepost {
-    min-width:33.3%;
     border-radius:12px;
     padding:12px;
     background-image:linear-gradient(to top,rgba(1,22,33,0.8),rgba(6,17,23,0.8)), url("../effects/mobile-texture.avif");
@@ -117,11 +103,7 @@ p, ul, ol, li, a, span {
 }
 .postgrid h3 {margin:10px 0 10px 0; text-align:left;}
 .postgrid h3 a {text-decoration:none; font-family:FiraCode-Retina,Roboto-Regular;}
-.postgrid date {
-    font-family:Hack-Regular;
-    font-size:8px;
-    color:darkgray;
-}
+.postgrid date {font-family:Hack-Regular;font-size:8px;color:darkgray;}
 .tags {text-align:left;}
 .tags a {
     display:inline-block;
@@ -134,6 +116,9 @@ p, ul, ol, li, a, span {
     margin-right:4px;
 }
 .tags-date p {font-family:Hack-Regular,FiraCode-Retina;font-size:12px;}
+.pagination {display:flex;margin-bottom:32px;align-items:center;justify-content:center;}
+.pagination h3 {display:inline-block;margin:0 24px 0 24px;font-size:24px;}
+.pagination img, .pagination .nopage, .pagination .pageinfo, .pagination a {display:inline-block;padding:0;}
 .sharing a {text-decoration:none;}
 .sharing img {
     display:inline;
@@ -142,9 +127,7 @@ p, ul, ol, li, a, span {
     width:32px;
     filter:invert(13%) sepia(13%) saturate(6715%) hue-rotate(169deg) brightness(94%) contrast(105%);
 }
-.sharing img:hover {
-    filter:invert(75%) sepia(47%) saturate(7250%) hue-rotate(178deg) brightness(104%) contrast(101%);
-}
+.sharing img:hover {filter:invert(75%) sepia(47%) saturate(7250%) hue-rotate(178deg) brightness(104%) contrast(101%);}
 table {table-layout:fixed; width:100%;}
 table thead tr th, table tbody tr td {overflow-wrap:break-word;}
 table thead tr th {
@@ -283,7 +266,7 @@ textarea {
     table {width:unset;}
     .postgrid {grid: auto auto / auto auto auto;}
     .singlepost {
-        background-image:linear-gradient(to bottom,rgba(4,22,54,0.8),rgba(11,20,38,0.8)), url("../effects/blackhole.avif");
+        width:var(--pg-width);background-image:linear-gradient(to bottom,rgba(4,22,54,0.8),rgba(11,20,38,0.8)), url("../effects/blackhole.avif");
         background-size:cover;
     }
     .singlepost:hover {background-image:linear-gradient(to top,rgba(4,22,54,0.3),rgba(168,50,129,0.3)), url("../effects/blackhole.avif");transform: scale(105%);}
