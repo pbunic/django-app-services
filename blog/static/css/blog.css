@@ -80,13 +80,8 @@ img {
     padding-top:20px;
     padding-bottom:20px;
 }
-p, ul, ol, li, a, span {
-    color: #bdbbbb;
-    font-family: Roboto-Regular, FiraCode-Retina;
-}
-.root {
-    --pg-width:unset;
-}
+p, ul, ol, li, a, span {color: #bdbbbb;font-family: Roboto-Regular, FiraCode-Retina;}
+.root {--pg-width:unset;}
 .postgrid {
     display:grid;
     grid: auto auto / auto;
@@ -119,6 +114,9 @@ p, ul, ol, li, a, span {
 .pagination {display:flex;margin-bottom:32px;align-items:center;justify-content:center;}
 .pagination h3 {display:inline-block;margin:0 24px 0 24px;font-size:24px;}
 .pagination img, .pagination .nopage, .pagination .pageinfo, .pagination a {display:inline-block;padding:0;}
+.pagination .yespage {filter:saturate(50%);}
+.pagination .yespage:hover {filter:saturate(100%);}
+.pagination .nopage {filter:saturate(0%);}
 .sharing a {text-decoration:none;}
 .sharing img {
     display:inline;
@@ -209,28 +207,12 @@ input:focus, textarea:focus {
     z-index:1;
     opacity:25;
 }
-textarea {
-    height:80px;
-    width:100%;
-}
-.errorlist {
-    color:#ff4d79;
-    float:left;
-    clear:both;
-    padding-left:8px;
-}
+textarea {height:80px;width:100%;}
+.errorlist {color:#ff4d79;float:left;clear:both;padding-left:8px;}
 .commentform {display:inline-block;}
 .comments {padding:10px; background:#00283c;}
-.comments:nth-child(even) {
-    background:unset;
-    border-right:1px solid #00283c;
-    border-left:1px solid #00283c;
-}
-.comments p {
-    font-family:Hack-Regular,FiraCode-Retina;
-    font-size:14px;
-    color:#dbdbdb;
-}
+.comments:nth-child(even) {background:unset;border-right:1px solid #00283c;border-left:1px solid #00283c;}
+.comments p {font-family:Hack-Regular,FiraCode-Retina;font-size:14px;color:#dbdbdb;}
 .comments .comment-author {font-size:16px;}
 
 @media only screen and (min-width: 768px)  {
@@ -251,18 +233,9 @@ textarea {
     }
     .overlay .closebtn {visibility:hidden;}
     .overlay a {font-size:24px;}
-    .overlay-content {
-        position:unset;
-        top:unset;
-        margin-top:unset;
-    }
+    .overlay-content {position:unset;top:unset;margin-top:unset;}
     a.navlink {padding:12px; padding-left:0;}
-    .codehilite {
-        margin-right:10%;
-        margin-left:10%;
-        padding-left:8px;
-        padding-bottom:8px;
-    }
+    .codehilite {margin-right:10%;margin-left:10%;padding-left:8px;padding-bottom:8px;}
     table {width:unset;}
     .postgrid {grid: auto auto / auto auto auto;}
     .singlepost {
