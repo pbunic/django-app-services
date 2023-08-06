@@ -15,9 +15,22 @@ body {
     padding:0 2% 0 2%;
     text-align:justify;
     -webkit-tap-highlight-color:transparent;
+    margin:0;
+    padding:0;
+}
+.page {
+    position:relative;
+    min-height:100vh;
     max-width:1100px;
-    margin-left:auto;
-    margin-right:auto;
+    margin:0 2% 0 2%;
+}
+footer {
+    display:block;
+    position:relative;
+    width:100%;
+    bottom:0;
+    background-color:#00283c;
+    height:10em;
 }
 .name {font-size:24px;}
 .skull {font-size:32px;}
@@ -80,7 +93,7 @@ img {
     padding-top:20px;
     padding-bottom:20px;
 }
-p, ul, ol, li, a, span {color: #bdbbbb;font-family: Roboto-Regular, FiraCode-Retina;}
+p, ul, ol, li, a, span {color:#bdbbbb;font-family: Roboto-Regular, FiraCode-Retina;}
 .root {--pg-width:unset;}
 .postgrid {
     display:grid;
@@ -93,11 +106,11 @@ p, ul, ol, li, a, span {color: #bdbbbb;font-family: Roboto-Regular, FiraCode-Ret
 .singlepost {
     border-radius:12px;
     padding:12px;
-    background-image:linear-gradient(to top,rgba(1,22,33,0.8),rgba(6,17,23,0.8)), url("../effects/mobile-texture.avif");
+    background-image:linear-gradient(to top,rgba(4,22,54,0.8),rgba(11,20,38,0.8)), url("../effects/texture.avif");
     background-size:cover;
 }
 .postgrid h3 {margin:10px 0 10px 0; text-align:left;}
-.postgrid h3 a {text-decoration:none; font-family:FiraCode-Retina,Roboto-Regular;}
+.postgrid h3 a {text-decoration:none; font-family:FiraCode-Retina,Roboto-Regular;color:#fff;}
 .postgrid date {font-family:Hack-Regular;font-size:8px;color:darkgray;}
 .tags {text-align:left;}
 .tags a {
@@ -209,14 +222,24 @@ input:focus, textarea:focus {
 }
 textarea {height:80px;width:100%;}
 .errorlist {color:#ff4d79;float:left;clear:both;padding-left:8px;}
-.commentform {display:inline-block;}
-.comments {padding:10px; background:#00283c;}
-.comments:nth-child(even) {background:unset;border-right:1px solid #00283c;border-left:1px solid #00283c;}
+.commentform {display:inline-block;padding-bottom:32px;}
+.comments {padding:10px; background:#00283c;border:1px solid #00283c;}
+.comments:nth-child(even) {background:unset;}
 .comments p {font-family:Hack-Regular,FiraCode-Retina;font-size:14px;color:#dbdbdb;}
 .comments .comment-author {font-size:16px;}
+#postlink{text-decoration:none;}
+#postlink:hover{color:#fff;}
 
 @media only screen and (min-width: 768px)  {
-    body {padding:0 10% 0 10%;}
+    .page {margin:0 10% 0 10%;}
+    footer {
+    display:block;
+    padding:0;
+    position:relative;
+    width:100vw;
+    bottom:0;
+    height:10em;
+    }
     .name {font-size:32px;}
     .skull {font-size:48px;}
     .responsive-nav-part-two {visibility:hidden;}
@@ -239,8 +262,8 @@ textarea {height:80px;width:100%;}
     table {width:unset;}
     .postgrid {grid: auto auto / auto auto auto;}
     .singlepost {
-        width:var(--pg-width);background-image:linear-gradient(to bottom,rgba(4,22,54,0.8),rgba(11,20,38,0.8)), url("../effects/blackhole.avif");
+        width:var(--pg-width);background-image:linear-gradient(to bottom,rgba(4,22,54,0.8),rgba(11,20,38,0.8)),url("../effects/texture.avif");
         background-size:cover;
     }
-    .singlepost:hover {background-image:linear-gradient(to top,rgba(4,22,54,0.3),rgba(168,50,129,0.3)), url("../effects/blackhole.avif");transform: scale(105%);}
+    .singlepost:hover {background-image:linear-gradient(to top,rgba(4,22,54,0.3),rgba(168,50,129,0.3)), url("../effects/texture.avif");transform: scale(105%);}
 }

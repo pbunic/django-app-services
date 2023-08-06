@@ -8,10 +8,11 @@
     <link rel="icon" href="{% static 'icons/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link rel="stylesheet" href="{% static 'css/codehilite_styles.css' %}">
-    <script src="{% static 'js/nav.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
 </head>
 
 <body>
+    <!-- Content without footer -->
     <div class="page">
         <!-- Navigation -->
         <div class="responsive-nav">
@@ -40,10 +41,10 @@
             {% block content %}
             {% endblock %}
         </div>
-
-        <!-- Footer -->
-        <footer></footer>
     </div>
 
+    <!-- Footer -->
+    <footer>
+    </footer>
 </body>
 </html>
