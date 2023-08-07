@@ -57,7 +57,7 @@ def post_list(request, tag_slug=None):
             except EmptyPage:
                 posts = paginator.page(paginator.num_pages)
             return render(
-            request, 'blog/post/list.html', {'form': form, 'query': query, 'results': results, 'posts': posts}
+                request, 'blog/post/list.html', {'form': form, 'query': query, 'results': results, 'posts': posts}
             )
 
         else:
