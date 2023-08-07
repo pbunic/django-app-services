@@ -23,6 +23,8 @@ body {
     min-height:100vh;
     max-width:1100px;
     margin:0 2% 0 2%;
+    margin-left:auto;
+    margin-right:auto;
 }
 footer {
     display:block;
@@ -32,12 +34,12 @@ footer {
     background-color:#00283c;
     height:10em;
 }
-.name {font-size:24px;}
-.skull {font-size:32px;}
-.menuicon {font-size:32px;cursor:pointer;}
-.responsive-nav {display:flex;align-content:space-evenly;}
-.responsive-nav-part-one {display:inline-block;width:100%;}
-.responsive-nav-part-two {display:flex;width:auto;}
+.name {font-size:32px;}
+.skull {font-size:42px;}
+.menuicon {font-size:42px;cursor:pointer;}
+.responsive-nav {display:flex;width:95%;margin:auto;align-content:space-evenly;}
+.responsive-nav-part-one {display:inline;width:100%;}
+.responsive-nav-part-two {display:inline;width:auto;}
 .responsive-nav-part-two .menuicon {text-align:right;width:100%;}
 .overlay {
     height:0%;
@@ -220,8 +222,9 @@ input:focus, textarea:focus {
     z-index:1;
     opacity:25;
 }
-textarea {height:80px;width:100%;}
-.errorlist {color:#ff4d79;float:left;clear:both;padding-left:8px;}
+textarea {width:100%;}
+.errorlist {padding-left:18px;}
+.errorlist li {color:#ff4d79;float:left;clear:both;padding-bottom:8px;}
 .commentform {display:inline-block;padding-bottom:32px;}
 .comments {padding:10px; background:#00283c;border:1px solid #00283c;}
 .comments:nth-child(even) {background:unset;}
@@ -229,17 +232,17 @@ textarea {height:80px;width:100%;}
 .comments .comment-author {font-size:16px;}
 #postlink{text-decoration:none;}
 #postlink:hover{color:#fff;}
+.searchpage {display:flex;justify-content:center;padding-top:32px;}
+.searchpage form {display:flex;background:#00283c;border-radius:12px;width:98%;}
+.searchpage form p {margin:0 12px 0 12px;;width:100%;overflow:hidden;}
+.searchpage form p input, textarea {background:unset; font-size:16px;width:100%;}
+.searchpage form input:focus, .searchpage form p input:focus {background:unset;}
+.searchpage form p input[type=text] {margin:0;box-shadow:unset;padding:24px 0 24px 0;}
+.searchpage form input[type=submit] {display:block;margin:0;background:unset;background-image:linear-gradient(to top,rgba(4,22,54,0.8),rgba(11,20,38,0.8));border-radius:0 12px 12px 0;padding:24px 24px 24px 24px;}
 
 @media only screen and (min-width: 768px)  {
-    .page {margin:0 10% 0 10%;}
-    footer {
-    display:block;
-    padding:0;
-    position:relative;
-    width:100vw;
-    bottom:0;
-    height:10em;
-    }
+    .page {margin:0 10% 0 10%;margin-left:auto;margin-right:auto;}
+    footer {display:block;padding:0;position:relative;width:100vw;bottom:0;height:10em;}
     .name {font-size:32px;}
     .skull {font-size:48px;}
     .responsive-nav-part-two {visibility:hidden;}
@@ -266,4 +269,5 @@ textarea {height:80px;width:100%;}
         background-size:cover;
     }
     .singlepost:hover {background-image:linear-gradient(to top,rgba(4,22,54,0.3),rgba(168,50,129,0.3)), url("../effects/texture.avif");transform: scale(105%);}
+    .searchpage form {width:75%;}
 }

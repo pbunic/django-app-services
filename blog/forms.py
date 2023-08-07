@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import Comment
+from .validators import validate_no_space
 
 
 class EmailPostForm(forms.Form):
@@ -39,4 +40,4 @@ class CommentForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     """Search form."""
-    query = forms.CharField(label='')
+    query = forms.CharField(label='', validators=[validate_no_space])

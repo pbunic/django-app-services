@@ -1,0 +1,16 @@
+<div class="searchpage">
+    {% if query %}
+        <h2>search results for "{{ query }}":</h2>
+        <h3>
+            {% with results.count as total_results %}
+                found {{ total_results }} result{{ total_results|pluralize }}
+            {% endwith %}
+        </h3>
+        <p class="return"><a href="{% url 'blog:post_list' %}">RETURN</a></p>
+    {% else %}
+        <form method="get">
+            {{ form.as_p }}
+            <input type="submit" value="search">
+        </form>
+    {% endif %}
+</div>

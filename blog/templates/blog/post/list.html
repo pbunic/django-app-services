@@ -2,6 +2,9 @@
 {% load blog_tags %}
 {% load static %}
 {% block content %}
+
+    {% include "blog/post/includes/search.html" %}
+
     <div class="postgrid" id="grid-container">
         {% for post in posts %}
             <div class="singlepost">
@@ -18,5 +21,6 @@
         {% endfor %}
     </div>
     <script src="{% static 'js/grid.js' %}"></script>
+
     {% include "blog/post/includes/pagination.html" with page=posts %}
 {% endblock %}
