@@ -8,7 +8,7 @@
         </h3>
         <p class="return"><a href="{% url 'blog:post_list' %}">RETURN</a></p>
     {% else %}
-        <form method="get">
+        <form method="get" autocomplete="off">
             {{ form.as_p }}
             <input type="submit" value="search">
         </form>

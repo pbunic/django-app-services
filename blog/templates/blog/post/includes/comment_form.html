@@ -1,5 +1,5 @@
 <div class="commentform">
-    <form action="{% url 'blog:post_comment' post.slug %}" method="post">
+    <form action="{% url 'blog:post_comment' post.slug %}" method="post" autocomplete="off">
         {{ form.as_p }}
         {% csrf_token %}
         <p><input type="submit" value="Add comment"></p>
