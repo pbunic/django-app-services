@@ -1,16 +1,23 @@
 <div class="searchpage">
     {% if query %}
-        <h2>search results for "{{ query }}":</h2>
-        <h3>
-            {% with results.count as total_results %}
-                found {{ total_results }} result{{ total_results|pluralize }}
-            {% endwith %}
-        </h3>
-        <p class="return"><a href="{% url 'blog:post_list' %}">RETURN</a></p>
+        <div class="search-results">
+            {% if results %}
+                <h3>search results for "{{ query }}":
+                    {% with results.count as total_results %}
+                        &nbsp;found {{ total_results }} result{{ total_results|pluralize }}.
+                    {% endwith %}
+                </h3>
+            {% else %}
+                <h3>There are no matching results. Try again with different keywords set.</h3>
+            {% endif %}
+            <p><a href="{% url 'blog:post_list' %}">RETURN TO BLOG</a></p>
+        </div>
     {% else %}
-        <form method="get" autocomplete="off">
-            {{ form.as_p }}
-            <input type="submit" value="search">
-        </form>
+        <div class="form-wrap">
+            <form method="get" autocomplete="off">
+                {{ form.as_p }}
+                <input type="submit" value="search">
+            </form>
+        </div>
     {% endif %}
 </div>

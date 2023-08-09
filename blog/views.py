@@ -23,11 +23,6 @@ def about_page(request, tag_slug=None):
     return render(request, 'blog/about.html')
 
 
-def soc_page(request, tag_slug=None):
-    """SOC page."""
-    return render(request, 'blog/soc.html')
-
-
 def post_list(request, tag_slug=None):
     """Unified searching through blog posts."""
 
@@ -135,6 +130,11 @@ def post_comment(request, post):
         comment.post = post
         comment.save()
     return render(request, 'blog/post/comment.html', {'post': post, 'form': form, 'comment': comment})
+
+
+def hardware_page(request, tag_slug=None):
+    """Hardware page."""
+    return render(request, 'blog/hardware.html')
 
 
 def services_page(request, tag_slug=None):
