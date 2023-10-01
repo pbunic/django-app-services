@@ -1,4 +1,5 @@
 @font-face {font-family:"Victor-Mono";src:url("../fonts/Victor-Mono.ttf") format('truetype');}
+@font-face {font-family:"Montserrat";src:url("../fonts/Montserrat-Light.ttf") format('truetype');}
 @font-face {font-family:"Fragment-Mono";src:url("../fonts/Fragment-Mono.ttf") format('truetype');}
 body {background-color:#010814;padding:0 2% 0 2%;text-align:justify;margin:0;padding:0;-webkit-tap-highlight-color:transparent;overflow:scroll;}
 body::-webkit-scrollbar {height:100%;width:5px;}
@@ -33,10 +34,11 @@ h1 {color:#ebebeb;font-family:Victor-Mono,sans-serif;text-align:center;padding-t
 h2, h3, h4 {color:#bdbbbb;font-family:Victor-Mono,sans-serif;margin:48px 0 24px 0;}
 .toc-h3 {font-family:Victor-Mono,sans-serif;}
 img {display:block;max-width:100%;height:auto;margin-left:auto;margin-right:auto;padding-top:20px;padding-bottom:20px;}
-p, ul, ol, li, span, a {color:#bdbbbb;font-family:Victor-Mono,sans-serif;}
-.root {--pg-width:unset;}
+p, ul, ol, li, span {color:#bdbbbb;font-family:Montserrat,sans-serif;}
+a {color:#bdbbbb;font-family:Victor-Mono,sans-serif;}
 .postgrid {display:grid;grid:auto auto / auto;grid-gap:20px;width:100%;padding-top:32px;padding-bottom:32px;}
-.singlepost {border-radius:12px;padding:12px;background-image:linear-gradient(to top,rgba(4,22,54,0.8),rgba(11,20,38,0.8)), url("../effects/texture.avif");background-size:cover;}
+.singlepost {border-radius:12px;padding:12px;background-image:linear-gradient(to top,rgb(4,22,54),rgb(44,14,87));border:solid 1px deepskyblue;}
+.singlepost:nth-child(even) {background-image:linear-gradient(to top,rgb(34,4,54),rgb(14,29,87));border:solid 1px deeppink;}
 .postgrid h3 {margin:10px 0 10px 0; text-align:left;}
 .postgrid h3 a {text-decoration:none;color:#ebebeb;}
 .tags {text-align:left;padding-top:8px;padding-bottom:8px;}
@@ -108,8 +110,7 @@ textarea {width:100%;}
     .codehilite {background:#002;margin-right:10%;margin-left:10%;padding-left:8px;padding-bottom:8px;}
     table {width:unset;}
     .postgrid {grid: auto auto / auto auto auto;}
-    .singlepost {width:var(--pg-width);background-image:linear-gradient(to bottom,rgba(4,22,54,0.8),rgba(11,20,38,0.8)),url("../effects/texture.avif");background-size:cover;}
-    .singlepost:hover {background-image:linear-gradient(to top,rgba(4,22,54,0.3),rgba(168,50,129,0.3)), url("../effects/texture.avif");transform: scale(105%);}
+    .singlepost:hover {background-image:linear-gradient(to top,rgba(4,22,54,0.3),rgba(44,14,87,0.3));transform: scale(105%);}
     .searchpage .form-wrap {width:75%;}
     .searchpage .form-wrap form {width:100%;}
 }
