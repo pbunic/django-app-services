@@ -18,6 +18,7 @@ services:
     image: postgres:15.2
     volumes:
       - dev_postgres_data:/var/lib/postgresql/data/
+      - ./scripts/psql:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}

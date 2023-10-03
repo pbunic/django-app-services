@@ -12,7 +12,7 @@ urlpatterns = [
     path('blog/tag/<slug:tag_slug>', views.post_list, name='post_list_tag'),
     path('mail/<slug:post>/', views.post_share, name='post_share'),
     path('comment/<slug:post>/', views.post_comment, name='post_comment'),
-    path('hardware/', views.hardware_page, name='hardware_page'),
+    path('videos/', views.videos_page, name='videos_page'),
     path('services/', views.services_page, name='services_page'),
     path('feed/', LatestPostsFeed(), name='post_feed'),
 ]
