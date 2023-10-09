@@ -37,7 +37,7 @@ img {display:block;max-width:100%;height:auto;margin-left:auto;margin-right:auto
 p, ul, ol, li, span {color:#bdbbbb;font-family:Montserrat,sans-serif;}
 a {color:#bdbbbb;font-family:Victor-Mono,sans-serif;}
 .postgrid {display:grid;grid:auto auto / auto;grid-gap:20px;width:100%;padding-top:32px;padding-bottom:32px;}
-.singlepost {border-radius:12px;padding:12px;background-image:linear-gradient(to top,rgb(4,22,54),rgb(44,14,87));border:solid 1px deepskyblue;}
+.singlepost {border-radius:12px;padding:12px;background-image:linear-gradient(to top,rgb(4,22,54),rgb(44,14,87));border:solid 1px deepskyblue;overflow-y:scroll;}
 .singlepost:nth-child(even) {background-image:linear-gradient(to top,rgb(34,4,54),rgb(14,29,87));border:solid 1px deeppink;}
 .postgrid h3 {margin:10px 0 10px 0; text-align:left;}
 .postgrid h3 a {text-decoration:none;color:#ebebeb;}
