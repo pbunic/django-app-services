@@ -1,59 +1,120 @@
 version: "3.8"
 
+networks:
+  netapp:
+    driver: bridge
+
+volumes:
+  static_volume:
+  media_volume:
+  pgmaster_data:
+  pgadmin_data:
+  redis_data:
+  prometheus_data:
+
 services:
   app:
     build: .
-    restart: always
+    restart: unless-stopped
     command: gunicorn --bind 0.0.0.0:8000 config.wsgi:application
     env_file:
       - ./.env
+    networks:
+      - netapp
     expose:
       - 8000
     volumes:
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
+      - static_volume:/app/staticfiles/
+      - media_volume:/app/mediafiles/
     depends_on:
+      - pgmaster
       - redis
-      - db
 
-  db:
+  pgmaster:
     image: postgres:15.2
-    restart: always
+    restart: unless-stopped
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - pgmaster_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
+    networks:
+      - netapp
+    expose:
+      - 5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - PGADMIN_DEFAULT_EMAIL=${DJANGO_ADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${DB_PASSWORD}
+      - PGADMIN_LISTEN_PORT=5050
+    networks:
+      - netapp
+    expose:
+      - 5050
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin/
+    depends_on:
+      - pgmaster
 
   redis:
     image: redis:7
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASS}
+    env_file:
+      - ./.env
+    networks:
+      - netapp
+    expose:
+      - 6379
+    volumes:
+      - redis_data:/data
 
   celery:
     build: .
-    restart: always
+    restart: unless-stopped
     command: celery -A config worker -l info
-    volumes:
-      - .:/app
     env_file:
       - ./.env
+    networks:
+      - netapp
+    volumes:
+      - .:/app
     depends_on:
-      - db
-      - redis
       - app
+
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--web.external-url=http://localhost/prometheus/'
+    networks:
+      - netapp
+    expose:
+      - 9090
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
 
   nginx:
     build: ./nginx
-    restart: always
+    restart: unless-stopped    
+    networks:
+      - netapp
     ports:
       - ${NGINX_PORT}:80
     volumes:
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
+      - static_volume:/app/staticfiles/
+      - media_volume:/app/mediafiles/
     depends_on:
       - app
-
-volumes:
-  postgres_data:
-  static_volume:
-  media_volume:
+      - pgadmin
+      - prometheus

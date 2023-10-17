@@ -14,6 +14,7 @@ urlpatterns = [
     path('', include('blog.urls')),
     re_path(r'mdeditor/', include('mdeditor.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('', include('django_prometheus.urls')),
 ]
 
 if settings.DEBUG:
