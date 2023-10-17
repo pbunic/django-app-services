@@ -58,6 +58,7 @@ services:
       - 5050
     volumes:
       - pgadmin_data:/var/lib/pgadmin/
+      - ./scripts/psql:/docker-entrypoint-initdb.d
     depends_on:
       - pgmaster
 
