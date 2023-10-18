@@ -11,6 +11,7 @@ volumes:
   pgadmin_data:
   redis_data:
   prometheus_data:
+  grafana_data:
 
 services:
   app:
@@ -45,11 +46,11 @@ services:
       - 5432
 
   pgadmin:
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:latest
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${DB_USER}
-      - PGADMIN_DEFAULT_EMAIL=${DJANGO_ADMIN_EMAIL}
+      - PGADMIN_DEFAULT_EMAIL=${DJANGO_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${DB_PASSWORD}
       - PGADMIN_LISTEN_PORT=5050
     networks:
@@ -104,6 +105,56 @@ services:
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
+    depends_on:
+      - app
+      - node-exporter
+      - nginx-exporter
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    restart: unless-stopped
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.rootfs=/rootfs'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    networks:
+      - netapp
+    expose:
+      - 9100
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:latest
+    restart: unless-stopped
+    command:
+      - '-nginx.scrape-uri=http://nginx:80/stub_status'
+    networks:
+      - netapp
+    expose:
+      - 9113
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GF_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_PASS}
+      - GF_USERS_ALLOW_SIGN_UP=false
+    networks:
+      - netapp
+    expose:
+      - 3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
 
   nginx:
     build: ./nginx
@@ -119,3 +170,4 @@ services:
       - app
       - pgadmin
       - prometheus
+      - grafana

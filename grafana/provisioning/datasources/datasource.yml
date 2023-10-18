@@ -1,0 +1,10 @@
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://nginx/prometheus
+    jsonData:
+      httpMethod: POST
+      manageAlerts: true
+      prometheusType: Prometheus

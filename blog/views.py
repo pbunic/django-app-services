@@ -42,7 +42,7 @@ def post_list(request, tag_slug=None):
                 rank=SearchRank(search_vector, search_query)
             ).filter(rank__gte=0.3).order_by('-rank')
 
-            paginator = Paginator(results, 9)
+            paginator = Paginator(results, 8)
             page_number = request.GET.get('page', 1)
 
             try:
@@ -66,7 +66,7 @@ def post_list(request, tag_slug=None):
             tag = get_object_or_404(Tag, slug=tag_slug)
             post_list = post_list.filter(tags__in=[tag])
 
-        paginator = Paginator(post_list, 9)
+        paginator = Paginator(post_list, 8)
         page_number = request.GET.get('page', 1)
 
         try:
@@ -89,7 +89,7 @@ def post_detail(request, post):
     # Similar posts recommendation
     post_topic_list = post.tags.values_list('id', flat=True)
     recommend = Post.published.filter(tags__in=post_topic_list).exclude(id=post.id)
-    recommend = recommend.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:3]
+    recommend = recommend.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:5]
 
     return render(request,
                   'blog/post/detail.html',
