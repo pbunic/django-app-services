@@ -40,19 +40,19 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
 
       - name: Flake Linting
         run: |
-          python3 -m pip install flake8
-          python3 -m flake8 ./blog --max-line-length=127 --exclude=migrations -v
+          python -m pip install flake8
+          python -m flake8 ./blog --max-line-length=127 --exclude=migrations -v
 
       - name: Set Test Environment
         run: |
-          chmod +x test_env.sh
-          ./test_env.sh
+          chmod +x ./scripts/test_env.sh
+          ./scripts/test_env.sh
 
       - name: Run Tests
         run: |
-          python3 manage.py test -v 2
+          python manage.py test -v 2
