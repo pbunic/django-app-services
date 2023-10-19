@@ -15,10 +15,6 @@ scrape_configs:
     static_configs:
       - targets: ['node-exporter:9100']
 
-  - job_name: cadvisor-metrics
-    static_configs:
-      - targets: ['cadvisor:8080']
-
   - job_name: django-app-metrics
     static_configs:
       - targets: ['app:8000']
