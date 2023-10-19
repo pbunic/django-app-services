@@ -31,7 +31,6 @@ services:
     depends_on:
       - pgmaster
       - redis
-      - prometheus
 
   pgmaster:
     image: postgres:15.2
@@ -91,37 +90,6 @@ services:
     depends_on:
       - app
 
-  prometheus:
-    image: prom/prometheus:latest
-    restart: unless-stopped
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
-      - '--web.console.templates=/usr/share/prometheus/consoles'
-      - '--web.external-url=http://localhost/prometheus/'
-    networks:
-      - netapp
-    expose:
-      - 9090
-    volumes:
-      - ./prometheus:/etc/prometheus/
-      - prometheus_data:/prometheus
-
-  alert-manager:
-    image: prom/alertmanager:latest
-    restart: unless-stopped
-    command: '--config.file=/config/alertmanager.yml --log.level=debug'
-    env_file:
-      - ./.env
-    networks:
-      - netapp
-    expose:
-      - 9093
-    volumes:
-      - ./alertmanager:/config
-      - alertmanager_data:/data
-
   node-exporter:
     image: prom/node-exporter:latest
     restart: unless-stopped
@@ -138,8 +106,6 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-    depends_on:
-      - prometheus
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
@@ -150,6 +116,41 @@ services:
       - netapp
     expose:
       - 9113
+
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--web.external-url=http://localhost/prometheus/'
+    networks:
+      - netapp
+    expose:
+      - 9090
+    volumes:
+      - ./prometheus:/etc/prometheus/
+      - prometheus_data:/prometheus
+    depends_on:
+      - app
+      - node-exporter
+      - nginx-exporter
+
+  alert-manager:
+    image: prom/alertmanager:latest
+    restart: unless-stopped
+    command: '--config.file=/config/alertmanager.yml --log.level=debug'
+    env_file:
+      - ./.env
+    networks:
+      - netapp
+    expose:
+      - 9093
+    volumes:
+      - ./alertmanager:/config
+      - alertmanager_data:/data
     depends_on:
       - prometheus
 

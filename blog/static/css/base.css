@@ -18,10 +18,11 @@ footer .footer-wrap {
     background-color:#00283c;
     height:10em; /* attr just for debugging purpose */
 }
+.name-a {text-decoration:unset;}
 .name {font-family:Victor-Mono,sans-serif;font-size:28px;}
 .menuicon {font-size:32px;cursor:pointer;}
 .responsive-nav {display:flex;width:95%;margin:auto;align-content:space-evenly;}
-.responsive-nav-part-one {display:inline;width:100%;padding-top:4px;}
+.responsive-nav-part-one {display:inline;width:100%;padding-top:4px;justify-content:center;}
 .responsive-nav-part-two {display:inline;width:auto;}
 .responsive-nav-part-two .menuicon {text-align:right;width:100%;}
 .overlay {height:0%;width:100%;position:fixed;z-index:1;top:0;left:0;background-color:rgb(0,0,0);overflow:hidden;transition:0.3s;}
@@ -99,10 +100,10 @@ textarea {width:100%;}
 .searchpage .search-results p {display:inline-block;}
 .searchpage .search-results p a:hover {color:#0045ad;}
 @media only screen and (min-width: 768px)  {
-    .name {font-size:32px;}
+    .name {font-size:32px;padding:2px;}
     .responsive-nav {width:100%;}
-    .responsive-nav-part-one {padding-top:32px;}
-    .responsive-nav-part-two {visibility:hidden;}
+    .responsive-nav-part-one {display:flex;padding-top:32px;}
+    .responsive-nav-part-two {display:none;}
     .overlay-content {display:flex;}
     .overlay {height:unset;width:unset;position:unset;z-index:unset;transition:unset;background-color:#010814;top:unset;left:unset;}
     .overlay .closebtn {visibility:hidden;}

@@ -132,11 +132,6 @@ def post_comment(request, post):
     return render(request, 'blog/post/comment.html', {'post': post, 'form': form, 'comment': comment})
 
 
-def videos_page(request, tag_slug=None):
-    """Videos page."""
-    return render(request, 'blog/videos.html')
-
-
 def services_page(request, tag_slug=None):
     """Services page."""
     return render(request, 'blog/services.html')

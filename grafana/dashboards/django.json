@@ -4,7 +4,7 @@
   "annotations": {
     "list": []
   },
-  "description": "A dashboard that monitors Django which focuses on giving a overview for requests. It is created using the [Django-mixin](https://github.com/adinhodovic/django-mixin).",
+  "description": "A dashboard that monitors Django which focuses on giving a overview for requests.",
   "editable": true,
   "gnetId": 17616,
   "graphTooltip": 0,

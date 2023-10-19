@@ -17,7 +17,9 @@
         <!-- Navigation -->
         <div class="responsive-nav">
             <div class="responsive-nav-part-one">
-                <span class="name">{{ request.site.name }}</span>
+                <a href="{% url 'blog:homepage' %}" class="name-a">
+                    <span class="name">{{ request.site.name }}</span>
+                </a>
             </div>
             <div class="responsive-nav-part-two">
                 <span class="menuicon" onclick="openNav()">&#9776;</span>
@@ -27,11 +29,9 @@
         <div id="myNav" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="overlay-content">
-                <a href="{% url 'blog:homepage' %}" class="navlink">Home</a>
-                <a href="{% url 'blog:about_page' %}" class="navlink">About</a>
-                <a href="{% url 'blog:post_list' %}" class="navlink">Blog</a>
-                <a href="{% url 'blog:videos_page' %}" class="navlink">Videos</a>
-                <a href="{% url 'blog:services_page' %}" class="navlink">Services</a>
+                <a href="{% url 'blog:about_page' %}" class="navlink">/about</a>
+                <a href="{% url 'blog:post_list' %}" class="navlink">/blog</a>
+                <a href="{% url 'blog:services_page' %}" class="navlink">/services</a>
             </div>
         </div>
         <hr>
