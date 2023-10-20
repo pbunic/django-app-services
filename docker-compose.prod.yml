@@ -40,6 +40,7 @@ services:
     restart: unless-stopped
     volumes:
       - pgmaster_data:/var/lib/postgresql/data/
+      - ./scripts/psql:/docker-entrypoint-initdb.d/
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
@@ -54,8 +55,8 @@ services:
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${DB_USER}
-      - PGADMIN_DEFAULT_EMAIL=${DJANGO_USER_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${DB_PASSWORD}
+      - PGADMIN_DEFAULT_EMAIL=${USER_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${USER_PASSWORD}
       - PGADMIN_LISTEN_PORT=5050
     networks:
       - netapp
@@ -63,7 +64,6 @@ services:
       - 5050
     volumes:
       - pgadmin_data:/var/lib/pgadmin/
-      - ./scripts/psql:/docker-entrypoint-initdb.d
     depends_on:
       - pgmaster
 
@@ -104,6 +104,7 @@ services:
       - .:/app
     depends_on:
       - app
+      - redis
 
   node-exporter:
     image: prom/node-exporter:latest
@@ -172,8 +173,10 @@ services:
   grafana:
     image: grafana/grafana-oss:latest
     restart: unless-stopped
-    env_file:
-      - ./.env
+    environment:
+      - GF_SECURITY_ADMIN_USER=${USER_NAME}
+      - GF_SECURITY_ADMIN_PASSWORD=${USER_PASSWORD}
+      - GF_USERS_ALLOW_SIGN_UP=false
     networks:
       - netapp
     expose:
