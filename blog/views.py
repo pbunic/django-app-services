@@ -1,10 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
-from django.views.generic import ListView
 from django.views.decorators.http import require_POST
 from django.db.models import Count
-from django.http import JsonResponse
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 from .models import Post
@@ -132,4 +130,3 @@ def post_comment(request, post):
 def services_page(request, tag_slug=None):
     """Services page."""
     return render(request, 'blog/services.html')
-
