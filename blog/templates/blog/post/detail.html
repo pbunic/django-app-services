@@ -19,26 +19,27 @@
         <p class="pubdate">Published: {{ post.publish | localtime }}</p>
         <div class="sharing">
             <a href="{% url 'blog:post_share' post.slug %}">
-                <img src="{% static 'icons/mail.svg' %}" alt="mail">
+                <img src="{% static 'icons/post_sharing/copylink-square.svg' %}" alt="cp">
             </a>
             <a href="#">
-                <img src="{% static 'icons/rss-square.svg' %}" alt="rss">
+                <img src="{% static 'icons/post_sharing/rss-square.svg' %}" alt="rss">
             </a>
             <a href="#">
-                <img src="{% static 'icons/twitter-square.svg' %}" alt="twitter">
+                <img src="{% static 'icons/post_sharing/twitter-square.svg' %}" alt="twitter">
             </a>
             <a href="#">
-                <img src="{% static 'icons/reddit-square.svg' %}" alt="reddit">
+                <img src="{% static 'icons/post_sharing/reddit-square.svg' %}" alt="reddit">
             </a>
             <a href="https://news.ycombinator.com/submitlink?u={{ request.build_absolute_uri }}">
-                <img src="{% static 'icons/hacker-news-square.svg' %}" alt="hn">
+                <img src="{% static 'icons/post_sharing/hacker-news-square.svg' %}" alt="hn">
             </a>
         </div>
 
         <!-- Post cover image and body. -->
-        <img src="{{ post.img_cover }}" alt="Post header image" class="coverimg">
+        <img src="{{ post.imagecover }}" alt="Post header image" class="coverimg">
+        <blockquote class="post-quote-desc">{{ post.description }}</blockquote>
         <h3 class="toc-h3">TABLE OF CONTENTS:</h3>
-        <p>{{ post.body | f_markdown | safe }}</p>
+        <p>{{ post.body|f_markdown|safe }}</p>
         <br>
         <hr>
 

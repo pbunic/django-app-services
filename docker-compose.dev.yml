@@ -6,19 +6,18 @@ services:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./:/web
+      - dev_webapp_data:/web
     env_file:
-      - ./.env
+      - ./.env.dev
     ports:
       - 8000:8000
     depends_on:
-      - db
-  db:
+      - pgmaster
+  pgmaster:
     container_name: dev-db
     image: postgres:15.2
     volumes:
       - dev_postgres_data:/var/lib/postgresql/data/
-      - ./scripts/psql:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
@@ -26,3 +25,5 @@ services:
 
 volumes:
   dev_postgres_data:
+  dev_webapp_data:
+

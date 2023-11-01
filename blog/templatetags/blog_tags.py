@@ -6,6 +6,7 @@ import markdown as md
 
 register = template.Library()
 
+
 extensions_config = {
     "codehilite": {
         "linenums": ["inline"],

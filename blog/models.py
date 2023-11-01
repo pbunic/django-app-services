@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+
 from mdeditor.fields import MDTextField
 from taggit.managers import TaggableManager
 
@@ -23,7 +24,8 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
-    img_cover = models.CharField(max_length=1000)
+    imagecover = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000)
     body = MDTextField()
     tags = TaggableManager(
         verbose_name=_('Tags'),

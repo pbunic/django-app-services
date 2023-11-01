@@ -1,13 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
+from django.views.generic import ListView
 from django.views.decorators.http import require_POST
 from django.db.models import Count
-from django.contrib.postgres.search import (
-    SearchVector,
-    SearchQuery,
-    SearchRank,
-)
+from django.http import JsonResponse
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+
 from .models import Post
 from .forms import EmailPostForm, CommentForm, SearchForm
 from taggit.models import Tag
@@ -24,7 +23,7 @@ def about_page(request, tag_slug=None):
 
 
 def post_list(request, tag_slug=None):
-    """Unified searching through blog posts."""
+    """Unified listing and searching through blog posts."""
 
     form = SearchForm()
     query = None
@@ -42,7 +41,7 @@ def post_list(request, tag_slug=None):
                 rank=SearchRank(search_vector, search_query)
             ).filter(rank__gte=0.3).order_by('-rank')
 
-            paginator = Paginator(results, 8)
+            paginator = Paginator(results, 5)
             page_number = request.GET.get('page', 1)
 
             try:
@@ -51,9 +50,8 @@ def post_list(request, tag_slug=None):
                 posts = paginator.page(1)
             except EmptyPage:
                 posts = paginator.page(paginator.num_pages)
-            return render(
-                request, 'blog/post/list.html', {'form': form, 'query': query, 'results': results, 'posts': posts}
-            )
+            context = {'form': form, 'query': query, 'results': results, 'posts': posts}
+            return render(request, 'blog/post/list.html', context)
 
         else:
             return render(request, 'blog/post/list.html', {'form': form})
@@ -66,7 +64,7 @@ def post_list(request, tag_slug=None):
             tag = get_object_or_404(Tag, slug=tag_slug)
             post_list = post_list.filter(tags__in=[tag])
 
-        paginator = Paginator(post_list, 8)
+        paginator = Paginator(post_list, 5)
         page_number = request.GET.get('page', 1)
 
         try:
@@ -75,9 +73,8 @@ def post_list(request, tag_slug=None):
             posts = paginator.page(1)
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
-        return render(
-            request, 'blog/post/list.html', {'form': form, 'query': query, 'posts': posts, 'tag': tag}
-        )
+        context = {'form': form, 'query': query, 'posts': posts, 'tag': tag}
+        return render(request, 'blog/post/list.html', context)
 
 
 def post_detail(request, post):
@@ -135,3 +132,4 @@ def post_comment(request, post):
 def services_page(request, tag_slug=None):
     """Services page."""
     return render(request, 'blog/services.html')
+

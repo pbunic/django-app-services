@@ -1,4 +1,6 @@
-<div class="searchpage">
+{% load static %}
+
+<div class="searchbar">
     {% if query %}
         <div class="search-results">
             {% if results %}
@@ -16,7 +18,7 @@
         <div class="form-wrap">
             <form method="get" autocomplete="off">
                 {{ form.as_p }}
-                <input type="submit" value="search">
+                <input class="btn-img-input" type="image" name="search" src="{% static 'icons/buttons/search.svg' %}" alt="search button">
             </form>
         </div>
     {% endif %}

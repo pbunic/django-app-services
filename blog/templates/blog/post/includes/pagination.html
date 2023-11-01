@@ -1,23 +1,31 @@
 {% load static %}
 
-<div class="pagination">
-    {% if page.has_previous %}
-        <a class="yespage" href="?page={{ page.previous_page_number }}">
-            <img src="{% static 'icons/previous-64.png' %}" alt="PREVIOUS" width="48" height="48">
-        </a>
-    {% else %}
-        <a class="nopage">
-            <img src="{% static 'icons/previous-64.png' %}" alt="PREVIOUS" width="48" height="48">
+<div class="list-pages">
+    {% if page.number != 1 %}
+        <a class="first-page" href="?page=1">
+            [ 1 ] -
         </a>
     {% endif %}
-        <h3>{{ page.number }} / {{ page.paginator.num_pages }}</h3>
+    {% if page.has_previous %}
+        {% if page.previous_page_number > 1 %}
+            <a class="previous-page" href="?page={{ page.previous_page_number }}">
+                [ {{ page.previous_page_number }} ]
+            </a>
+        {% endif %}
+    {% endif %}
+    <a class="current-page" href="#">
+        [ {{ page.number }} ]
+    </a>
     {% if page.has_next %}
-        <a class="yespage" href="?page={{ page.next_page_number }}">
-            <img src="{% static 'icons/next-64.png' %}" alt="NEXT" width="48" height="48">
-        </a>
-    {% else %}
-        <a class="nopage">
-            <img src="{% static 'icons/next-64.png' %}" alt="NEXT" width="48" height="48">
+        {% if page.next_page_number != page.paginator.num_pages %}
+            <a class="next-page" href="?page={{ page.next_page_number }}">
+                [ {{ page.next_page_number }} ]
+            </a>
+        {% endif %}
+    {% endif %}
+    {% if page.paginator.num_pages != page.number %}
+        <a class="last-page" href="?page={{ page.paginator.num_pages }}">
+            / [ {{ page.paginator.num_pages }} ]
         </a>
     {% endif %}
 </div>

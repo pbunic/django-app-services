@@ -1,0 +1,105 @@
+/* search */
+.searchbar {
+  display:flex;
+  justify-content:center;
+  padding-top:1.5em;
+}
+.searchbar .form-wrap {
+  display:block;
+  width:90%;
+  padding:0.1em;
+  background:#121212;
+  border:solid 0.1em #DDD;
+}
+.searchbar .form-wrap form {
+  display:flex;
+  justify-content:center;
+}
+.searchbar .form-wrap form p {
+  display:flex;
+  width:90%;
+  padding-left:1.4em;
+  padding-right:1.4em;
+  margin-top:0.3em;
+  margin-bottom:0.3em;
+}
+.searchbar .form-wrap form p input {
+  display:flex;
+  width:100%;
+  background:unset;
+  border:unset;
+  font-size:1em;
+  color:#DDD;
+  background:unset;
+}
+.searchbar .form-wrap form p input:active {
+  border:unset;
+}
+.btn-img-input {
+  height:1.6em;
+  width:10%;
+  padding:1em;
+  background:#DDD;
+  filter:invert(0%) sepia(0%) saturate(150%) hue-rotate(12deg) brightness(80%) contrast(80%);
+}
+textarea:focus, input:focus {
+  outline:none;
+}
+/* listing */
+.posts-container .post-member .post-name {margin-bottom:0;}
+.post-member {padding-top:1.5em;}
+.post-tags {
+  color:#3B3B3B;
+  background:#777;
+  border-bottom:solid 0.2em #3B3B3B;
+  padding:0.4em 0.4em 0.4em 0.4em;
+}
+.post-tags a {
+  color:#000;
+  margin-right:0.3em;
+  border:solid 0.1em #000;
+  border-radius:0.3em;
+  padding:0.1em;
+}
+.img-tag {
+  height:1em;
+  object-fit:cover;
+  vertical-align:middle;
+  margin-right:0.2em;
+}
+.read-article {
+  display:inline-block;
+  text-decoration:underline;
+  color:#00FF00;
+}
+/* pagination */
+.list-pages {
+  display:flex;
+  justify-content:center;
+  font-size:0.8em;
+  padding-top:1.5em;
+  padding-bottom:1.5em;
+}
+.first-page, .previous-page, .current-page, .next-page, .last-page {
+  padding:0.1em;
+  margin-left:0.2em;
+  margin-right:0.2em;
+  font-family:Victor-Mono,monospace;
+}
+.current-page {
+  background:#3B3B3B;
+}
+@media only screen and (min-width: 768px)  {
+  /* for desktop screens */
+  .list-pages {
+    font-size:1em;
+  }
+  .first-page, .previous-page, .current-page, .next-page, .last-page {
+  padding:0.2em;
+  margin-left:0.3em;
+  margin-right:0.3em;
+  }
+  .searchbar .form-wrap {
+    width:50%;
+  }
+}
