@@ -1,18 +1,27 @@
-pre { line-height: 125%; }
-td.linenos .normal { color: #6e7681; background-color: #002; padding-left: 5px; padding-right: 5px; }
-span.linenos { color: #6e7681; background-color: #002; padding-left: 5px; padding-right: 5px; }
-td.linenos .special { color: #c9d1d9; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
-span.linenos.special { color: #c9d1d9; background-color: #6e7681; padding-left: 5px; padding-right: 5px; }
+@font-face {font-family:"IBM";src:url("../fonts/IBM.ttf") format('truetype');}
+pre {line-height:125%;}
+td.linenos .normal {color:#6e7681; background-color:#000; padding-left:5px; padding-right:5px;font-family:IBM,Victor-Mono,sans-serif;}
+span.linenos {color:#6e7681; background-color:#000; padding-left:5px; padding-right:5px;}
+td.linenos .special {color:#c9d1d9; background-color:#6e7681; padding-left:5px; padding-right:5px;}
+span.linenos.special {color:#c9d1d9; background-color:#6e7681; padding-left:5px; padding-right:5px;}
+/* fixing inherited values */
+.codehilite .codehilitetable {display:block;overflow-x:scroll;border:solid 0.1em #00FF00;}
+.codehilite .codehilitetable tbody tr {display:block;font-size:1em;}
+.codehilite .codehilitetable tbody tr .linenos {}
+.codehilite .codehilitetable tbody tr .code {}
+td.linenos {border:unset;border-right:solid 0.1em #00FF00;}
+td.code {overflow-x:scroll;text-align:left;border:unset;}
+td.code div pre code {font-family:IBM,Victor-Mono,sans-serif;}
+/* end block */
 .codehilite .hll { background-color: #6e7681 }
-.codehilite { background: #002; color: #c9d1d9 }
 .codehilite .c { color: #8b949e; font-style: italic } /* Comment */
 .codehilite .err { color: #f85149 } /* Error */
 .codehilite .esc { color: #c9d1d9 } /* Escape */
 .codehilite .g { color: #c9d1d9 } /* Generic */
-.codehilite .k { color: #ff7b72 } /* Keyword */
+.codehilite .k { color: #00FF00 } /* Keyword */
 .codehilite .l { color: #a5d6ff } /* Literal */
 .codehilite .n { color: #c9d1d9 } /* Name */
-.codehilite .o { color: #ff7b72; font-weight: bold } /* Operator */
+.codehilite .o { color: #00FF00; font-weight: bold } /* Operator */
 .codehilite .x { color: #c9d1d9 } /* Other */
 .codehilite .p { color: #c9d1d9 } /* Punctuation */
 .codehilite .ch { color: #8b949e; font-style: italic } /* Comment.Hashbang */

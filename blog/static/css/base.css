@@ -3,7 +3,8 @@
 @font-face {font-family:"Victor-Mono";src:url("../fonts/Victor-Mono.ttf") format('truetype');}
 body {
   /* general design */
-  background-color:#121212;
+  /* background-color:#121212; */
+  background-color:#000;
   font-family:Inter-L,sans-serif;
   text-align:justify;
   overflow:scroll;
@@ -19,12 +20,13 @@ body {
   margin-right:auto;
 }
 hr {color:#3B3B3B;}
-.page h1 {
+.
+h1 {
   text-decoration:none;
   color:white;
   font-family:Inter-M,sans-serif;
 }
-.page h2, h3, h4, h5, p, a, ul, ol, li, span, blockquote {
+h2, h3, h4, h5, p, a, span, ul, ol, li, tr, th, td, blockquote {
   text-decoration:none;
   color:white;
 }
@@ -41,6 +43,7 @@ hr {color:#3B3B3B;}
   padding:1.2em;
   background:#363534;
   cursor:pointer;
+  color:#00FF00;
 }
 .overlay {
   display:inline-grid;
@@ -63,6 +66,7 @@ hr {color:#3B3B3B;}
   display:block;
   padding:1.2em;
   text-align:right;
+  color:#00FF00;
 }
 .mlink {
   display:block;

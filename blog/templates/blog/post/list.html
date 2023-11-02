@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
     {% include "blog/post/includes/search.html" %}
     <div class="posts-container" id="posts-container">
         {% for post in posts %}
@@ -13,7 +14,7 @@
                     <div class="post-tags">
                         {% for tag in post.tags.all %}
                             <a class="single-tag" href="{% url 'blog:post_list_tag' tag.slug %}">
-                                <img class="img-tag" src="{% static 'icons/buttons/tag.svg' %}" alt="search button">{{ tag.name }}
+                                <img class="img-tag" src="{% static 'icons/svg/tag.svg' %}" alt="tag">{{ tag.name }}
                             </a>
                         {% endfor %}
                     </div>
@@ -26,5 +27,4 @@
         {% endfor %}
     </div>
     {% include "blog/post/includes/pagination.html" with page=posts %}
-    <link rel="stylesheet" href="{% static 'css/list.css' %}">
 {% endblock %}

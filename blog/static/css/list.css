@@ -6,10 +6,10 @@
 }
 .searchbar .form-wrap {
   display:block;
-  width:90%;
+  width:100%;
   padding:0.1em;
   background:#121212;
-  border:solid 0.1em #DDD;
+  border:solid 0.1em #00FF00;
 }
 .searchbar .form-wrap form {
   display:flex;
@@ -39,7 +39,7 @@
   height:1.6em;
   width:10%;
   padding:1em;
-  background:#DDD;
+  background:#00FF00;
   filter:invert(0%) sepia(0%) saturate(150%) hue-rotate(12deg) brightness(80%) contrast(80%);
 }
 textarea:focus, input:focus {
@@ -49,15 +49,21 @@ textarea:focus, input:focus {
 .posts-container .post-member .post-name {margin-bottom:0;}
 .post-member {padding-top:1.5em;}
 .post-tags {
-  color:#3B3B3B;
-  background:#777;
-  border-bottom:solid 0.2em #3B3B3B;
+  color:#000;
+  /* background:#3B3B3B; */
+  border-bottom:solid 0.05em #00FF00;
+  border-radius:0.3em 0.3em 0 0;
   padding:0.4em 0.4em 0.4em 0.4em;
+  background-color: #e5e5f7;
+  opacity: 0.9;
+  background-size: 0.5em 0.5em;
+  background-image: repeating-linear-gradient(45deg, #000 0, #000 0.1em, #00FF00 0, #00FF00 25%);
 }
 .post-tags a {
-  color:#000;
+  color:#00FF00;
+  background:#000;
   margin-right:0.3em;
-  border:solid 0.1em #000;
+  border:solid 0.1em #00FF00;
   border-radius:0.3em;
   padding:0.1em;
 }
@@ -66,6 +72,7 @@ textarea:focus, input:focus {
   object-fit:cover;
   vertical-align:middle;
   margin-right:0.2em;
+  filter:invert(55%) sepia(32%) saturate(4894%) hue-rotate(84deg) brightness(129%) contrast(119%);
 }
 .read-article {
   display:inline-block;
