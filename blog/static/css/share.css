@@ -1,0 +1,34 @@
+.postmail {
+  display:inline-block;
+  margin-top:2em;
+  margin-bottom:2em;
+  border:solid 0.1em #00FF00;
+  padding:1.2em;
+}
+.postmail form {
+  display:inline-grid;
+}
+.postmail form p label {
+  display:block;
+  margin-bottom:0.2em;
+}
+.postmail form p input, .postmail form p textarea {
+  background:#000;
+  color:#0F0;
+  border:solid 0.1em;
+  padding:0.5em;
+  font-family:Inter-L,sans-serif;
+}
+.postmail form p textarea {
+  width:calc(100% - 1.2em);
+}
+.postmail form input[type=submit] {
+  border:solid 0.1em #0F0;
+  height:2.5em;
+  color:#000;
+  background:#0F0;
+  font-family:Victor-Mono,sans-serif;
+}
+ul.errorlist {margin-bottom:0;padding-left:1.2em;}
+ul.errorlist li {color:red;}
+

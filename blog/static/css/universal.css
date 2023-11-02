@@ -1,0 +1,11 @@
+a.internal-link {
+  display:inline-block;
+  text-decoration:underline;
+  color:#00FF00;
+}
+a.external-link {
+  display:inline-block;
+  text-decoration:underline;
+  font-style:italic;
+  color:#00CC00;
+}

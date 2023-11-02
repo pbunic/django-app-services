@@ -1,6 +1,4 @@
 from django import forms
-from django.utils.translation import gettext_lazy as _
-from .models import Comment
 from .validators import validate_no_space
 
 
@@ -23,19 +21,6 @@ class EmailPostForm(forms.Form):
         required=False, label='optional comment:',
         widget=forms.Textarea
     )
-
-
-class CommentForm(forms.ModelForm):
-    """Add a comment."""
-
-    class Meta:
-        model = Comment
-        fields = ['name', 'email', 'body']
-        labels = {
-            'name': _('name:'),
-            'email': _('email:'),
-            'body': _('comment:'),
-        }
 
 
 class SearchForm(forms.Form):

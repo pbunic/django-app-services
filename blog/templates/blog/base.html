@@ -27,9 +27,9 @@
                 <a href="javascript:void(0)" class="menu-close" onclick="closeNav()">[ close ]</a>
                 <a href="{% url 'blog:about_page' %}" class="mlink">about</a>
                 <a href="{% url 'blog:post_list' %}" class="mlink">blog</a>
-                <a href="#" class="mlink">homelab</a>
+                <a href="{% url 'blog:homelab_page' %}" class="mlink">homelab</a>
                 <a href="{% url 'blog:services_page' %}" class="mlink">services</a>
-                <a href="#" class="mlink">meta+faq</a>
+                <a href="{% url 'blog:metafaq_page' %}" class="mlink">meta+faq</a>
             </div>
         </div>
         <div class="desktop-navigation">
@@ -43,9 +43,9 @@
             <div class="site-links">
                 <a href="{% url 'blog:about_page' %}" class="navlink">[ about ]</a>
                 <a href="{% url 'blog:post_list' %}" class="navlink">[ blog ]</a>
-                <a href="#" class="navlink">[ homelab ]</a>
+                <a href="{% url 'blog:homelab_page' %}" class="navlink">[ homelab ]</a>
                 <a href="{% url 'blog:services_page' %}" class="navlink">[ services ]</a>
-                <a href="#" class="navlink">[ meta+faq ]</a>
+                <a href="{% url 'blog:metafaq_page' %}" class="navlink">[ meta+faq ]</a>
             </div>
         </div>
         <hr class="main-hr">

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import TextInput
-from .models import Post, Comment
+from .models import Post
 
 
 @admin.register(Post)
@@ -15,10 +15,3 @@ class PostAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '72'})},
     }
-
-
-@admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'post', 'created', 'active']
-    list_filter = ['active', 'created', 'updated']
-    search_fields = ['name', 'email', 'body']

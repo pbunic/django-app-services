@@ -1,12 +1,11 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
-from django.views.decorators.http import require_POST
 from django.db.models import Count
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 from .models import Post
-from .forms import EmailPostForm, CommentForm, SearchForm
+from .forms import EmailPostForm, SearchForm
 from taggit.models import Tag
 
 
@@ -78,20 +77,13 @@ def post_list(request, tag_slug=None):
 def post_detail(request, post):
     """View post."""
     post = get_object_or_404(Post, status=Post.Status.PUBLISHED, slug=post)
-    comments = post.comments.filter(active=True)
-    form = CommentForm()
 
     # Similar posts recommendation
     post_topic_list = post.tags.values_list('id', flat=True)
     recommend = Post.published.filter(tags__in=post_topic_list).exclude(id=post.id)
     recommend = recommend.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:5]
 
-    return render(request,
-                  'blog/post/detail.html',
-                  {'post': post,
-                   'comments': comments,
-                   'form': form,
-                   'recommend': recommend})
+    return render(request, 'blog/post/detail.html', {'post': post, 'recommend': recommend})
 
 
 def post_share(request, post):
@@ -105,7 +97,7 @@ def post_share(request, post):
             cd = form.cleaned_data
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = post.title
-            message = f"Read post: {post_url}\n\n" + f"{cd['name']}'s comment:\n{cd['comment']}"
+            message = f"Read post: {post_url}\n\n" + f"{cd['name'] + ' <' + cd['email'] + '>'}'s comment:\n{cd['comment']}"
             send_mail(subject, message, 'django@example.com', [cd['to_mail']])
             sent = True
     else:
@@ -113,20 +105,16 @@ def post_share(request, post):
     return render(request, 'blog/post/share.html', {'post': post, 'form': form, 'sent': sent})
 
 
-@require_POST
-def post_comment(request, post):
-    """Post a comment."""
-    post = get_object_or_404(Post, status=Post.Status.PUBLISHED, slug=post)
-    comment = None
-
-    form = CommentForm(data=request.POST)
-    if form.is_valid():
-        comment = form.save(commit=False)
-        comment.post = post
-        comment.save()
-    return render(request, 'blog/post/comment.html', {'post': post, 'form': form, 'comment': comment})
+def homelab_page(request, tag_slug=None):
+    """Homelab page."""
+    return render(request, 'blog/homelab.html')
 
 
 def services_page(request, tag_slug=None):
     """Services page."""
     return render(request, 'blog/services.html')
+
+
+def metafaq_page(request, tag_slug=None):
+    """Meta+FAQ page."""
+    return render(request, 'blog/metafaq.html')

@@ -74,11 +74,6 @@ textarea:focus, input:focus {
   margin-right:0.2em;
   filter:invert(55%) sepia(32%) saturate(4894%) hue-rotate(84deg) brightness(129%) contrast(119%);
 }
-.read-article {
-  display:inline-block;
-  text-decoration:underline;
-  color:#00FF00;
-}
 /* pagination */
 .list-pages {
   display:flex;

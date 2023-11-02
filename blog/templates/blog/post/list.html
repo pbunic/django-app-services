@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/universal.css' %}">
     <link rel="stylesheet" href="{% static 'css/list.css' %}">
     {% include "blog/post/includes/search.html" %}
     <div class="posts-container" id="posts-container">
@@ -19,7 +20,7 @@
                         {% endfor %}
                     </div>
                     <p class="post-desc">{{ post.description }}
-                        <a href="{{ post.get_absolute_url }}" class="read-article">read article</a>
+                        <a class="internal-link" href="{{ post.get_absolute_url }}">read article</a>
                     </p>
                 </div>
             </div>

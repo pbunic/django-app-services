@@ -1,18 +1,23 @@
 {% extends "blog/base.html" %}
-
-{% block title %}Share a post{% endblock %}
-
+{% load static %}
+{% block title %}Share a post: {{ post.title }}{% endblock %}
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'css/universal.css' %}">
+<link rel="stylesheet" href="{% static 'css/share.css' %}">
 <div class="postmail">
     {% if sent %}
-        <h2>Email successfully sent.</h2>
-        <p>
-            Post: {{ post.title }}<br>Sent to:
-            <a href="mailto: {{ form.cleaned_data.to_mail }}">{{ form.cleaned_data.to_mail }}</a>
+        <h3>Email successfully sent.</h3>
+        <p class="post-sent-meta">
+            <strong>POST:</strong> {{ post.title }}<br>
+            <strong>SENDER:</strong> {{ form.cleaned_data.name }} < <a class="external-link" href="mailto: {{ form.cleaned_data.to_mail }}">{{ form.cleaned_data.email }}</a> ><br>
+            <strong>SENT TO:</strong> <a class="external-link" href="mailto: {{ form.cleaned_data.to_mail }}">{{ form.cleaned_data.to_mail }}</a><br>
+            <strong>COMMENT:</strong><br>
+            {{ form.cleaned_data.comment }}<br><br>
+            <a class="internal-link" href="{% url 'blog:post_list' %}{{ post.slug }}">RETURN TO POST</a>
         </p>
     {% else %}
-        <h2>share post --- {{ post.title }}</h2>
+        <h4>share post via server's email:</h4>
+        <h3>{{ post.title }}</h3>
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}
@@ -20,5 +25,4 @@
         </form>
     {% endif %}
 </div>
-
 {% endblock %}
