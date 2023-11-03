@@ -7,6 +7,41 @@ from mdeditor.fields import MDTextField
 from taggit.managers import TaggableManager
 
 
+class Info(models.Model):
+    """Site-related static informations."""
+    base_title = models.CharField(max_length=30)
+    home_title = models.CharField(max_length=50)
+    home_paragraph = models.TextField(max_length=500)
+    about_blog = models.TextField(max_length=2500)
+    about_author = models.TextField(max_length=2500)
+    contact_email = models.EmailField()
+    instagram_feed = models.CharField(max_length=2500, blank=True)
+    copyright = models.CharField(max_length=100, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Informations'
+
+    def __str__(self):
+        return 'Website main informations'
+
+
+class Newsletter(models.Model):
+    """Website subscriptions to the newsletters."""
+    email = models.EmailField()
+    active = models.BooleanField(default=True)
+    subscribed = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Subscriptions'
+        ordering = ['-subscribed']
+        indexes = [
+            models.Index(fields=['-subscribed']),
+        ]
+
+    def __str__(self):
+        return self.email
+
+
 class PublishedManager(models.Manager):
     """Custom manager for filtering published posts."""
     def get_queryset(self):
@@ -25,7 +60,7 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     imagecover = models.CharField(max_length=1000)
-    description = models.CharField(max_length=1000)
+    description = models.TextField(max_length=1000)
     body = MDTextField()
     tags = TaggableManager(
         verbose_name=_('Tags'),
@@ -53,4 +88,3 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.slug])
-
