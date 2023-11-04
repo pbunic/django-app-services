@@ -2,7 +2,13 @@ from django.contrib import admin
 from django.db import models
 from django.forms import TextInput
 
-from .models import Info, Post, Newsletter
+from .models import (
+    Info,
+    Footer,
+    Newsletter,
+    TechStack,
+    Post,
+)
 
 
 @admin.register(Info)
@@ -36,6 +42,32 @@ class InfoAdmin(admin.ModelAdmin):
             info_instance.save()
 
 
+@admin.register(Footer)
+class FooterAdmin(admin.ModelAdmin):
+    list_display = ['link_name', 'link_slug', 'link_section']
+    list_filter = ['link_section']
+    search_fields = ['link_section', 'link_name']
+    prepopulated_fields = {'link_slug': ('link_name',)}
+    ordering = ['link_section']
+
+
+@admin.register(Newsletter)
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display = ['email', 'active', 'subscribed']
+    list_filter = ['active', 'subscribed']
+    search_fields = ['email']
+    date_hierarchy = 'subscribed'
+    ordering = ['-subscribed']
+
+
+@admin.register(TechStack)
+class TechStackAdmin(admin.ModelAdmin):
+    list_display = ['name', 'url', 'show']
+    list_filter = ['show']
+    search_fields = ['name', 'show']
+    ordering = ['show']
+
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'publish', 'status']
@@ -47,12 +79,3 @@ class PostAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '72'})},
     }
-
-
-@admin.register(Newsletter)
-class NewsletterAdmin(admin.ModelAdmin):
-    list_display = ['email', 'active', 'subscribed']
-    list_filter = ['active', 'subscribed']
-    search_fields = ['email']
-    date_hierarchy = 'subscribed'
-    ordering = ['-subscribed']

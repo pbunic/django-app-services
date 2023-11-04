@@ -9,12 +9,12 @@ from .forms import EmailPostForm, SearchForm
 from taggit.models import Tag
 
 
-def homepage(request, tag_slug=None):
+def homepage(request):
     """Landing page."""
     return render(request, 'blog/home.html')
 
 
-def about_page(request, tag_slug=None):
+def about_page(request):
     """Informations page."""
     return render(request, 'blog/about.html')
 
@@ -105,16 +105,16 @@ def post_share(request, post):
     return render(request, 'blog/post/share.html', {'post': post, 'form': form, 'sent': sent})
 
 
-def homelab_page(request, tag_slug=None):
+def homelab_page(request):
     """Homelab page."""
     return render(request, 'blog/homelab.html')
 
 
-def services_page(request, tag_slug=None):
+def services_page(request):
     """Services page."""
     return render(request, 'blog/services.html')
 
 
-def metafaq_page(request, tag_slug=None):
+def metafaq_page(request):
     """Meta+FAQ page."""
     return render(request, 'blog/metafaq.html')

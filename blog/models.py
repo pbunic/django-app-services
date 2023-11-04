@@ -9,20 +9,49 @@ from taggit.managers import TaggableManager
 
 class Info(models.Model):
     """Site-related static informations."""
-    base_title = models.CharField(max_length=30)
-    home_title = models.CharField(max_length=50)
-    home_paragraph = models.TextField(max_length=500)
-    about_blog = models.TextField(max_length=2500)
-    about_author = models.TextField(max_length=2500)
-    contact_email = models.EmailField()
-    instagram_feed = models.CharField(max_length=2500, blank=True)
-    copyright = models.CharField(max_length=100, blank=True)
+    base_title = models.CharField(max_length=30, help_text='Navigation spot title.')
+    home_title = models.CharField(max_length=50, help_text='Browser tab and huge landing page title.')
+    home_paragraph = models.TextField(max_length=500, help_text='Landing page short web introduction.')
+    about_blog = models.TextField(max_length=2500, help_text='Blog vision and roadmap.')
+    about_author = models.TextField(max_length=2500, help_text='Some personal informations.')
+    contact_email = models.EmailField(help_text='Email for contact.')
+    instagram_feed = models.TextField(max_length=2500, blank=True, help_text='Instagram embeded code.')
+    copyright = models.CharField(max_length=100, blank=True, help_text='Bottom copyright text.')
 
     class Meta:
         verbose_name_plural = 'Informations'
 
     def __str__(self):
         return 'Website main informations'
+
+
+class Footer(models.Model):
+    """Footer links."""
+
+    class Section(models.TextChoices):
+        """Footer links grouping."""
+        WEBSITE = 'WL', 'Website links'
+        OTHER = 'OL', 'Other links'
+        SOCIAL = 'SL', 'Social links'
+
+    link_name = models.CharField(max_length=50)
+    link_slug = models.SlugField(max_length=200, unique=True)
+    link_section = models.CharField(max_length=2, choices=Section.choices)
+    template_title = models.CharField(max_length=100)
+    template_body = MDTextField()
+
+    class Meta:
+        verbose_name_plural = 'Footer links'
+        ordering = ['link_section']
+        indexes = [
+            models.Index(fields=['link_section']),
+        ]
+
+    def __str__(self):
+        return self.link_name
+
+    def get_absolute_url(self):
+        return reverse('blog:general_info', args=[self.link_slug])
 
 
 class Newsletter(models.Model):
@@ -40,6 +69,25 @@ class Newsletter(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class TechStack(models.Model):
+    """Professional working stack."""
+    name = models.CharField(max_length=30, help_text='Name of technology.')
+    icon = models.ImageField(upload_to='techstack/', help_text='Logo icon.')
+    description = models.TextField(max_length=300, help_text='Just core description of service-related usage.')
+    url = models.URLField(max_length=150, help_text='Website of the technology.')
+    show = models.BooleanField(default=True, help_text='Should be rendered?')
+
+    class Meta:
+        verbose_name_plural = 'Techstack'
+        ordering = ['show']
+        indexes = [
+            models.Index(fields=['show']),
+        ]
+
+    def __str__(self):
+        return self.name
 
 
 class PublishedManager(models.Manager):

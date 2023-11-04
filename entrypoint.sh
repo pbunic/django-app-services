@@ -25,7 +25,7 @@ if [ "$DJANGO_SETTINGS_MODULE" = "config.settings.production" ]; then
     python manage.py collectstatic --no-input
 else
     mkdir -p static/
-    mkdir -p media/
+    mkdir -p media/techstack/
 fi
 
 exec "$@"
