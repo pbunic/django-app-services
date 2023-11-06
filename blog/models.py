@@ -8,21 +8,43 @@ from taggit.managers import TaggableManager
 
 
 class Info(models.Model):
-    """Site-related static informations."""
+    """Site-related base informations."""
     base_title = models.CharField(max_length=30, help_text='Navigation spot title.')
-    home_title = models.CharField(max_length=50, help_text='Browser tab and huge landing page title.')
-    home_paragraph = models.TextField(max_length=500, help_text='Landing page short web introduction.')
-    about_blog = models.TextField(max_length=2500, help_text='Blog vision and roadmap.')
-    about_author = models.TextField(max_length=2500, help_text='Some personal informations.')
+    home_title = models.CharField(max_length=50, help_text='Landing page title.')
+    home_paragraph = models.TextField(max_length=500, help_text='Landing page short introduction.')
+    about_blog = models.TextField(max_length=2500, help_text='Blog vision and summary.')
+    about_author = models.TextField(max_length=2500, help_text='Some informations about author.')
     contact_email = models.EmailField(help_text='Email for contact.')
     instagram_feed = models.TextField(max_length=2500, blank=True, help_text='Instagram embeded code.')
     copyright = models.CharField(max_length=100, blank=True, help_text='Bottom copyright text.')
+
+    # Manager
+    objects = models.Manager()
 
     class Meta:
         verbose_name_plural = 'Informations'
 
     def __str__(self):
-        return 'Website main informations'
+        return 'Website base informations'
+
+
+# Custom managers for Footer links
+class FooterWebsiteManager(models.Manager):
+    """Custom manager for filtering website-related footer links."""
+    def get_queryset(self):
+        return super().get_queryset().filter(link_section=Footer.Section.WEBSITE)
+
+
+class FooterOtherManager(models.Manager):
+    """Custom manager for filtering other-nonspecific footer links."""
+    def get_queryset(self):
+        return super().get_queryset().filter(link_section=Footer.Section.OTHER)
+
+
+class FooterSocialManager(models.Manager):
+    """Custom manager for filtering socialmedia-related footer links."""
+    def get_queryset(self):
+        return super().get_queryset().filter(link_section=Footer.Section.SOCIAL)
 
 
 class Footer(models.Model):
@@ -39,6 +61,12 @@ class Footer(models.Model):
     link_section = models.CharField(max_length=2, choices=Section.choices)
     template_title = models.CharField(max_length=100)
     template_body = MDTextField()
+
+    # Managers
+    objects = models.Manager()
+    website = FooterWebsiteManager()
+    other = FooterOtherManager()
+    social = FooterSocialManager()
 
     class Meta:
         verbose_name_plural = 'Footer links'

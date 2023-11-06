@@ -4,9 +4,12 @@ from django.core.mail import send_mail
 from django.db.models import Count
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
-from .models import Post
-from .forms import EmailPostForm, SearchForm
+from .models import Info, Footer, Newsletter, TechStack, Post
+from .forms import NewsletterForm, SearchForm, EmailPostForm
 from taggit.models import Tag
+
+
+EMAIL = 'django@example.com'
 
 
 def homepage(request):
@@ -31,7 +34,9 @@ def post_list(request, tag_slug=None):
 
         if form.is_valid():
             query = form.cleaned_data['query']
-            search_vector = SearchVector('title', weight='A') + SearchVector('body', weight='B')
+            search_vector = SearchVector('title', weight='A') + \
+                            SearchVector('description', weight='B') + \
+                            SearchVector('body', weight='C')
             search_query = SearchQuery(query)
             results = Post.published.annotate(
                 search=search_vector,
@@ -81,7 +86,7 @@ def post_detail(request, post):
     # Similar posts recommendation
     post_topic_list = post.tags.values_list('id', flat=True)
     recommend = Post.published.filter(tags__in=post_topic_list).exclude(id=post.id)
-    recommend = recommend.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:5]
+    recommend = recommend.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:3]
 
     return render(request, 'blog/post/detail.html', {'post': post, 'recommend': recommend})
 
@@ -98,7 +103,7 @@ def post_share(request, post):
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = post.title
             message = f"Read post: {post_url}\n\n" + f"{cd['name'] + ' <' + cd['email'] + '>'}'s comment:\n{cd['comment']}"
-            send_mail(subject, message, 'django@example.com', [cd['to_mail']])
+            send_mail(subject, message, EMAIL, [cd['to_mail']])
             sent = True
     else:
         form = EmailPostForm()

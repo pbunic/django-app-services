@@ -2,6 +2,11 @@ from django import forms
 from .validators import validate_no_space
 
 
+class NewsletterForm(forms.Form):
+    """doc"""
+    pass
+
+
 class EmailPostForm(forms.Form):
     """Share post by email."""
 

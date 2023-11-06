@@ -46,7 +46,7 @@ textarea:focus, input:focus {
   outline:none;
 }
 /* listing */
-.posts-container .post-member .post-name {margin-bottom:0;}
+.posts-container .post-member .post-name {margin-bottom:0;text-align:start;}
 .post-member {padding-top:1.5em;}
 .post-tags {
   color:#000;

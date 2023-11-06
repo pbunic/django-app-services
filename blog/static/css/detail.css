@@ -25,7 +25,7 @@
   object-fit:cover;
   filter:invert(55%) sepia(32%) saturate(4894%) hue-rotate(84deg) brightness(129%) contrast(119%);
 }
-/* xxx */
+/* img, desc and toc */
 .coverimg, .post-content img {
   display:block;
   margin-left:auto;
@@ -57,6 +57,7 @@
   border-left:1px solid #00FF00;
   border-right:1px solid #00FF00;
   border-bottom:1px solid #00FF00;
+  text-align:start;
 }
 .toc ul {
   padding-right:2.5em;
