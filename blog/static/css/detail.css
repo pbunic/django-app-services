@@ -111,6 +111,14 @@ th, td {
   font-family:Victor-Mono,Inter-M,sans-serif;
   overflow-x:scroll;
 }
+.post .post-content p a {
+  display:inline-block;
+  text-decoration:underline;
+  color:#00FF00;
+}
+.post .post-content p code {
+  font-family:Victor-Mono,sans-serif;
+}
 @media only screen and (min-width: 768px)  {
   /* for desktop screens */
   .post-title-h1 {

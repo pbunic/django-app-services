@@ -17,6 +17,15 @@ def homepage(request):
     return render(request, 'blog/home.html')
 
 
+def general_info(request, link_slug):
+    """Footer links rendering."""
+    query = Footer.objects.filter(link_slug=link_slug)
+    title = query.values_list('template_title', flat=True)
+    body = query.values_list('template_body', flat=True)
+    context = {'title': title[0], 'body': body[0]}
+    return render(request, 'blog/general.html', context)
+
+
 def about_page(request):
     """Informations page."""
     return render(request, 'blog/about.html')
@@ -35,8 +44,8 @@ def post_list(request, tag_slug=None):
         if form.is_valid():
             query = form.cleaned_data['query']
             search_vector = SearchVector('title', weight='A') + \
-                            SearchVector('description', weight='B') + \
-                            SearchVector('body', weight='C')
+                SearchVector('description', weight='B') + \
+                SearchVector('body', weight='C')
             search_query = SearchQuery(query)
             results = Post.published.annotate(
                 search=search_vector,

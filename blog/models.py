@@ -36,13 +36,13 @@ class FooterWebsiteManager(models.Manager):
 
 
 class FooterOtherManager(models.Manager):
-    """Custom manager for filtering other-nonspecific footer links."""
+    """Custom manager for filtering other non-specific footer links."""
     def get_queryset(self):
         return super().get_queryset().filter(link_section=Footer.Section.OTHER)
 
 
 class FooterSocialManager(models.Manager):
-    """Custom manager for filtering socialmedia-related footer links."""
+    """Custom manager for filtering social media related footer links."""
     def get_queryset(self):
         return super().get_queryset().filter(link_section=Footer.Section.SOCIAL)
 
@@ -57,10 +57,11 @@ class Footer(models.Model):
         SOCIAL = 'SL', 'Social links'
 
     link_name = models.CharField(max_length=50)
-    link_slug = models.SlugField(max_length=200, unique=True)
+    link_slug = models.SlugField(max_length=200, blank=True, help_text='Slug for website/other.')
+    link_url = models.URLField(max_length=200, blank=True, help_text='URL for social.')
     link_section = models.CharField(max_length=2, choices=Section.choices)
-    template_title = models.CharField(max_length=100)
-    template_body = MDTextField()
+    template_title = models.CharField(max_length=100, blank=True)
+    template_body = MDTextField(blank=True)
 
     # Managers
     objects = models.Manager()
@@ -70,15 +71,16 @@ class Footer(models.Model):
 
     class Meta:
         verbose_name_plural = 'Footer links'
-        ordering = ['link_section']
+        ordering = ['-link_section']
         indexes = [
-            models.Index(fields=['link_section']),
+            models.Index(fields=['-link_section']),
         ]
 
     def __str__(self):
         return self.link_name
 
     def get_absolute_url(self):
+        # for internal urls
         return reverse('blog:general_info', args=[self.link_slug])
 
 

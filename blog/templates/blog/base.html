@@ -64,7 +64,7 @@
                 <div class="footer-section">
                     {% for link in footer_links_website %}
                         <div class="footer-link">
-                            <a class="internal-link" href="#">
+                            <a class="internal-link" href="{{ link.get_absolute_url }}">
                                 {{ link.link_name }}
                             </a>
                         </div>
@@ -73,7 +73,7 @@
                 <div class="footer-section">
                     {% for link in footer_links_other %}
                         <div class="footer-link">
-                            <a class="internal-link" href="#">
+                            <a class="internal-link" href="{{ link.get_absolute_url }}">
                                 {{ link.link_name }}
                             </a>
                         </div>
@@ -82,15 +82,15 @@
                 <div class="footer-section">
                     {% for link in footer_links_social %}
                         <div class="footer-link">
-                            <a class="external-link" href="#">
+                            <a class="external-link" href="{{ link.link_url }}">
                                 {{ link.link_name }}
                             </a>
                         </div>
                     {% endfor %}
                 </div>
-                <div class="copyright-block">
-                    {{ copyright }}
-                </div>
+            </div>
+            <div class="copyright-block">
+                &copy;{% now "Y" %} {{ copyright }}
             </div>
         </div>
     </footer>

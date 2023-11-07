@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% load static %}
+{% load blog_tags %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <div class="general-tmpl-header">
+        <h1 class="general-tmpl-title">{{ title }}</h1>
+    </div>
+
+    <div class="general-tmpl-content">
+        {{ body|f_markdown|safe }}
+    </div>
+{% endblock %}
