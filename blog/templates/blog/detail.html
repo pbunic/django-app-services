@@ -8,6 +8,7 @@
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/detail.css' %}">
     <link rel="stylesheet" href="{% static 'css/syntax.css' %}">
+    <script src="{% static 'js/disqus.js' %}"></script>
     <div class="post">
         <!-- Post title, publishing date, tags and social links. -->
         <h1 class="post-title-h1">{{ post.title }}</h1>
@@ -59,5 +60,7 @@
             {% endfor %}
             <hr>
         {% endif %}
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
 {% endblock %}
