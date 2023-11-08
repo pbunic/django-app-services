@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% load static %}
-{% block title %}Share a post: {{ post.title }}{% endblock %}
+{% block title %}Email post: {{ post.title }}{% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/share.css' %}">
 <div class="postmail">
@@ -18,8 +18,8 @@
         <h4>share post via server's email:</h4>
         <h3>{{ post.title }}</h3>
         <form method="post">
-            {{ form.as_p }}
             {% csrf_token %}
+            {{ form.as_p }}
             <input type="submit" value="Send mail">
         </form>
     {% endif %}

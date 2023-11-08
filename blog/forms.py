@@ -1,15 +1,19 @@
 from django import forms
-from .validators import validate_no_space
+
+from .models import Newsletter
 
 
 class NewsletterForm(forms.Form):
-    """doc"""
-    pass
+    """Sign-in to newsletter."""
+    class Meta:
+        model = Newsletter
+        fields = ['email']
+
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': ''}))
 
 
 class EmailPostForm(forms.Form):
     """Share post by email."""
-
     name = forms.CharField(
         max_length=40, label='name:',
         error_messages={
@@ -30,4 +34,4 @@ class EmailPostForm(forms.Form):
 
 class SearchForm(forms.Form):
     """Search form."""
-    query = forms.CharField(label='', validators=[validate_no_space])
+    query = forms.CharField(label='')

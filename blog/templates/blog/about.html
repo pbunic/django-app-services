@@ -1,6 +1,28 @@
 {% extends "blog/base.html" %}
+{% load static %}
 
-{% block title %}?{% endblock %}
+{% block title %}{{ request.site.name }} | About{% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <div class="div-about-author">
+        <h2>About author</h2>
+        <p>{{ about_author }}</p>
+    </div>
+
+    <div class="div-about-blog">
+        <h2>About blog</h2>
+        <p>{{ about_blog }}</p>
+    </div>
+
+    <div class="div-about-stack">
+        {% for tech in techstack %}
+            <h3>{{ tech.name }}</h3>
+        {% endfor %}
+    </div>
+
+    <div class="div-about-contact">
+        <h3>Contact email</h3>
+        <p>{{ email }}</p>
+    </div>
 {% endblock %}

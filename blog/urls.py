@@ -14,6 +14,7 @@ urlpatterns = [
     path('homelab/', views.homelab_page, name='homelab_page'),
     path('services/', views.services_page, name='services_page'),
     path('metafaq/', views.metafaq_page, name='metafaq_page'),
+    path('newsletter/', views.newsletter, name='newsletter'),
     path('mail/<slug:post>/', views.post_share, name='post_share'),
     path('feed/', LatestPostsFeed(), name='post_feed'),
 ]

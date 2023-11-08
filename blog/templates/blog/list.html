@@ -4,7 +4,7 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/list.css' %}">
-    {% include "blog/post/includes/search.html" %}
+    {% include "blog/includes/search.html" %}
     <div class="posts-container" id="posts-container">
         {% for post in posts %}
             <div class="post-member">
@@ -26,5 +26,5 @@
             <hr>
         {% endfor %}
     </div>
-    {% include "blog/post/includes/pagination.html" with page=posts %}
+    {% include "blog/includes/pagination.html" with page=posts %}
 {% endblock %}

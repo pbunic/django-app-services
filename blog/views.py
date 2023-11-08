@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 from django.db.models import Count
@@ -12,11 +13,6 @@ from taggit.models import Tag
 EMAIL = 'django@example.com'
 
 
-def homepage(request):
-    """Landing page."""
-    return render(request, 'blog/home.html')
-
-
 def general_info(request, link_slug):
     """Footer links rendering."""
     query = Footer.objects.filter(link_slug=link_slug)
@@ -26,9 +22,40 @@ def general_info(request, link_slug):
     return render(request, 'blog/general.html', context)
 
 
+def newsletter(request):
+    """Newsletter success page."""
+    return render(request, 'blog/newsletter.html')
+
+
+def homepage(request):
+    """Landing page."""
+    query = Info.objects.first()
+    title = query.home_title
+    paragraph = query.home_paragraph
+    instagram = query.instagram_feed
+
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            Newsletter.objects.create(email=email)
+            return redirect(reverse('blog:newsletter'))
+    else:
+        form = NewsletterForm()
+
+    context = {'title': title, 'paragraph': paragraph, 'form': form, 'instagram': instagram}
+    return render(request, 'blog/home.html', context)
+
+
 def about_page(request):
-    """Informations page."""
-    return render(request, 'blog/about.html')
+    """Informations page for these interested in website."""
+    query = Info.objects.first()
+    about_blog = query.about_blog
+    about_author = query.about_author
+    email = query.contact_email
+    techstack = TechStack.objects.all()
+    context = {'about_blog': about_blog, 'about_author': about_author, 'techstack': techstack, 'email': email}
+    return render(request, 'blog/about.html', context)
 
 
 def post_list(request, tag_slug=None):
@@ -62,10 +89,10 @@ def post_list(request, tag_slug=None):
             except EmptyPage:
                 posts = paginator.page(paginator.num_pages)
             context = {'form': form, 'query': query, 'results': results, 'posts': posts}
-            return render(request, 'blog/post/list.html', context)
+            return render(request, 'blog/list.html', context)
 
         else:
-            return render(request, 'blog/post/list.html', {'form': form})
+            return render(request, 'blog/list.html', {'form': form})
 
     if 'query' not in request.GET:
         post_list = Post.published.all()
@@ -85,7 +112,7 @@ def post_list(request, tag_slug=None):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         context = {'form': form, 'query': query, 'posts': posts, 'tag': tag}
-        return render(request, 'blog/post/list.html', context)
+        return render(request, 'blog/list.html', context)
 
 
 def post_detail(request, post):
@@ -97,7 +124,7 @@ def post_detail(request, post):
     recommend = Post.published.filter(tags__in=post_topic_list).exclude(id=post.id)
     recommend = recommend.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:3]
 
-    return render(request, 'blog/post/detail.html', {'post': post, 'recommend': recommend})
+    return render(request, 'blog/detail.html', {'post': post, 'recommend': recommend})
 
 
 def post_share(request, post):
@@ -116,7 +143,7 @@ def post_share(request, post):
             sent = True
     else:
         form = EmailPostForm()
-    return render(request, 'blog/post/share.html', {'post': post, 'form': form, 'sent': sent})
+    return render(request, 'blog/share.html', {'post': post, 'form': form, 'sent': sent})
 
 
 def homelab_page(request):

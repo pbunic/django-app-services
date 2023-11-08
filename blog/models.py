@@ -86,9 +86,9 @@ class Footer(models.Model):
 
 class Newsletter(models.Model):
     """Website subscriptions to the newsletters."""
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     active = models.BooleanField(default=True)
-    subscribed = models.DateTimeField(auto_now=True)
+    subscribed = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = 'Subscriptions'
@@ -108,6 +108,9 @@ class TechStack(models.Model):
     description = models.TextField(max_length=300, help_text='Just core description of service-related usage.')
     url = models.URLField(max_length=150, help_text='Website of the technology.')
     show = models.BooleanField(default=True, help_text='Should be rendered?')
+
+    # Manager
+    objects = models.Manager()
 
     class Meta:
         verbose_name_plural = 'Techstack'
