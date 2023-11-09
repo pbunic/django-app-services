@@ -4,9 +4,9 @@ from .base import *
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '../', 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../', 'mediafiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 # Server SMTP configuration
 EMAIL_BACKEND = config('EMAIL_BACKEND')

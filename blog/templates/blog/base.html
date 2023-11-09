@@ -25,6 +25,7 @@
         <div id="myNav" class="overlay">
             <div class="overlay-content">
                 <a href="javascript:void(0)" class="menu-close" onclick="closeNav()">[ close ]</a>
+                <a href="{% url 'blog:homepage' %}" class="mlink">[ home ]</a>
                 <a href="{% url 'blog:about_page' %}" class="mlink">[ about ]</a>
                 <a href="{% url 'blog:post_list' %}" class="mlink">[ blog ]</a>
                 <a href="{% url 'blog:homelab_page' %}" class="mlink">[ homelab ]</a>
@@ -41,6 +42,7 @@
               </span>
             </div>
             <div class="site-links">
+                <a href="{% url 'blog:homepage' %}" class="navlink">[ home ]</a>
                 <a href="{% url 'blog:about_page' %}" class="navlink">[ about ]</a>
                 <a href="{% url 'blog:post_list' %}" class="navlink">[ blog ]</a>
                 <a href="{% url 'blog:homelab_page' %}" class="navlink">[ homelab ]</a>

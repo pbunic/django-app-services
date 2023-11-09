@@ -128,6 +128,9 @@ a.external-link {
 }
 @media only screen and (min-width: 768px)  {
   /* for desktop screens */
+  .footer-content {
+    justify-content:space-around;
+  }
   .main-hr {display:block;}
   .site-id {display:none;}
   .menu-open {display:none;}

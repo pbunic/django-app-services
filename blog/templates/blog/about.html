@@ -16,13 +16,19 @@
     </div>
 
     <div class="div-about-stack">
+        <h2>Technology stack</h2>
         {% for tech in techstack %}
-            <h3>{{ tech.name }}</h3>
+            <div class="techstack-box">
+                <img src="{{ MEDIA_URL }}{{ tech.icon }}" height=48 width=48>
+                <p class="techstack-name">{{ tech.name }}</p>
+                <p class="techstack-description">{{ tech.description }}</p>
+                <a class="techstack-url" href="{{ tech.url }}">{{ tech.url }}</a>
+            </div>
         {% endfor %}
     </div>
 
     <div class="div-about-contact">
-        <h3>Contact email</h3>
+        <h2>Contact email</h2>
         <p>{{ email }}</p>
     </div>
 {% endblock %}

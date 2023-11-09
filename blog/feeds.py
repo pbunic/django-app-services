@@ -18,7 +18,7 @@ class LatestPostsFeed(Feed):
         return item.title
 
     def item_description(self, item):
-        return truncatewords_html(markdown.markdown(item.intro), 40)
+        return truncatewords_html(markdown.markdown(item.description), 100)
 
     def item_pubdate(self, item):
         return item.publish

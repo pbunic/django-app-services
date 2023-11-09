@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
+from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import send_mail
 from django.db.models import Count
@@ -7,6 +8,8 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 from .models import Info, Footer, Newsletter, TechStack, Post
 from .forms import NewsletterForm, SearchForm, EmailPostForm
+from .feeds import LatestPostsFeed
+
 from taggit.models import Tag
 
 
@@ -32,6 +35,7 @@ def homepage(request):
     query = Info.objects.first()
     title = query.home_title
     paragraph = query.home_paragraph
+    posts = LatestPostsFeed().items()
     instagram = query.instagram_feed
 
     if request.method == 'POST':
@@ -43,7 +47,13 @@ def homepage(request):
     else:
         form = NewsletterForm()
 
-    context = {'title': title, 'paragraph': paragraph, 'form': form, 'instagram': instagram}
+    context = {
+        'title': title,
+        'paragraph': paragraph,
+        'posts': posts,
+        'form': form,
+        'instagram': instagram
+    }
     return render(request, 'blog/home.html', context)
 
 
@@ -54,7 +64,13 @@ def about_page(request):
     about_author = query.about_author
     email = query.contact_email
     techstack = TechStack.objects.all()
-    context = {'about_blog': about_blog, 'about_author': about_author, 'techstack': techstack, 'email': email}
+    context = {
+        'MEDIA_URL': settings.MEDIA_URL,
+        'about_blog': about_blog,
+        'about_author': about_author,
+        'techstack': techstack,
+        'email': email
+    }
     return render(request, 'blog/about.html', context)
 
 
@@ -138,7 +154,13 @@ def post_share(request, post):
             cd = form.cleaned_data
             post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = post.title
-            message = f"Read post: {post_url}\n\n" + f"{cd['name'] + ' <' + cd['email'] + '>'}'s comment:\n{cd['comment']}"
+
+            read_post = f'Read post: {post_url}\n\n'
+            if not cd['comment']:
+                sender_info = f'from: {cd["name"] + " <" + cd["email"] + ">"}'
+            else:
+                sender_info = f"{cd['name'] + ' <' + cd['email'] + '>'}'s comment:\n{cd['comment']}"
+            message = read_post + sender_info
             send_mail(subject, message, EMAIL, [cd['to_mail']])
             sent = True
     else:

@@ -5,7 +5,7 @@ from .base import *
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../', 'mediafiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 # Server SMTP configuration
 EMAIL_BACKEND = config('EMAIL_BACKEND')
