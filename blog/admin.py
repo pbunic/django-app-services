@@ -62,10 +62,10 @@ class NewsletterAdmin(admin.ModelAdmin):
 
 @admin.register(TechStack)
 class TechStackAdmin(admin.ModelAdmin):
-    list_display = ['name', 'url', 'show']
-    list_filter = ['show']
-    search_fields = ['name', 'show']
-    ordering = ['show']
+    list_display = ['name', 'id', 'url']
+    list_filter = ['name']
+    search_fields = ['name']
+    ordering = ['id']
 
 
 @admin.register(Post)

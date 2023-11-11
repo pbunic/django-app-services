@@ -85,7 +85,11 @@
 }
 /* other */
 .post-content p code {
-  color:#00FF00;
+  display:block;
+  color:#0F0;
+  font-size:0.9em;
+  border:ridge 0.1em #0F0;
+  padding:1em;
 }
 th {
   font-style:bold;
@@ -117,7 +121,7 @@ th, td {
   color:#00FF00;
 }
 .post .post-content p code {
-  font-family:Victor-Mono,sans-serif;
+  font-family:Hack,Victor-Mono,sans-serif;
 }
 @media only screen and (min-width: 768px)  {
   /* for desktop screens */

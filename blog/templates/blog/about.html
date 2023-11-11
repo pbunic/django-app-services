@@ -5,22 +5,25 @@
 
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/about.css' %}">
-    <div class="div-about-author">
-        <h2>About author</h2>
-        <p>{{ about_author }}</p>
-    </div>
-
     <div class="div-about-blog">
         <h2>About blog</h2>
         <p>{{ about_blog }}</p>
     </div>
 
+    <div class="div-about-author">
+        <h2>About author</h2>
+        <p>{{ about_author }}</p>
+    </div>
+
     <div class="div-about-stack">
         <h2>Technology stack</h2>
+        <p>"My journey through the realm of problem-solving is characterized by precision that borders on artistry. Excellence is not merely a pursuit; it's the art of blending micro-details and unrelenting focus to achieve unattainable perfection. My pursuit lies in the craft of solution that is not just functional but impeccably executed — a testament to professional precision and ruthless commitment."</p>
         {% for tech in techstack %}
             <div class="techstack-box">
-                <img src="{{ MEDIA_URL }}{{ tech.icon }}" height=48 width=48>
-                <p class="techstack-name">{{ tech.name }}</p>
+                <div class="techstack-box-header">
+                    <h3 class="techstack-name">{{ tech.name }}</h3>
+                    <img src="{{ MEDIA_URL }}{{ tech.icon }}" height=40 width=40>
+                </div>
                 <p class="techstack-description">{{ tech.description }}</p>
                 <a class="techstack-url" href="{{ tech.url }}">{{ tech.url }}</a>
             </div>
@@ -29,6 +32,9 @@
 
     <div class="div-about-contact">
         <h2>Contact email</h2>
-        <p>{{ email }}</p>
+            <div>
+                <a href="mailto:{{ email }}">{{ email }}</a>
+                <img src="{% static 'icons/svg/clipboard.svg' %}">
+            </div>
     </div>
 {% endblock %}

@@ -1,0 +1,36 @@
+.div-about-blog, .div-about-author, .div-about-stack, .div-about-contact {
+  margin-bottom:3em;
+}
+.techstack-box {
+  padding:1em;
+  border:solid 0.1em #0F0;
+  margin-bottom:2em;
+}
+.techstack-box .techstack-box-header {
+  display:flex;
+  border-bottom:dashed 0.1em #0F0;
+  justify-content:space-between;
+  align-items:center;
+}
+.techstack-box a {
+  color:#0F0;
+  text-decoration:underline;
+}
+.div-about-contact div {
+  display:inline-flex;
+  justify-content:start;
+  align-items:center;
+  border:ridge 0.1em #0F0;
+}
+.div-about-contact div a {
+  display:inline;
+  font-size:1.1em;
+  color:#0F0;
+  padding:1em;
+  border-right:solid 0.1em #0F0;
+}
+.div-about-contact div img {
+  height:1.5em;
+  padding:0.5em;
+  filter:invert(55%) sepia(32%) saturate(4894%) hue-rotate(84deg) brightness(129%) contrast(119%);
+}

@@ -1,6 +1,7 @@
 @font-face {font-family:"Inter-L";src:url("../fonts/Inter-Light.ttf") format('truetype');}
 @font-face {font-family:"Inter-M";src:url("../fonts/Inter-Medium.ttf") format('truetype');}
 @font-face {font-family:"Victor-Mono";src:url("../fonts/Victor-Mono.ttf") format('truetype');}
+@font-face {font-family:"Hack";src:url("../fonts/Hack.ttf") format('truetype');}
 body {
   /* general design */
   /* background-color:#121212; */
@@ -81,9 +82,9 @@ h2, h3, h4, h5, p, a, span, ul, ol, li, tr, th, td, blockquote {
 }
 .menu-open {
   padding:1.2em;
-  background:#363534;
+  background:#0F0;
   cursor:pointer;
-  color:#00FF00;
+  color:#000;
 }
 .overlay {
   display:inline-grid;

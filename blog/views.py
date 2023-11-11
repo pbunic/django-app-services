@@ -36,7 +36,6 @@ def homepage(request):
     title = query.home_title
     paragraph = query.home_paragraph
     posts = LatestPostsFeed().items()
-    instagram = query.instagram_feed
 
     if request.method == 'POST':
         form = NewsletterForm(request.POST)
@@ -52,7 +51,6 @@ def homepage(request):
         'paragraph': paragraph,
         'posts': posts,
         'form': form,
-        'instagram': instagram
     }
     return render(request, 'blog/home.html', context)
 

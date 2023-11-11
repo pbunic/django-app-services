@@ -15,8 +15,7 @@ class Info(models.Model):
     about_blog = models.TextField(max_length=2500, help_text='Blog vision and summary.')
     about_author = models.TextField(max_length=2500, help_text='Some informations about author.')
     contact_email = models.EmailField(help_text='Email for contact.')
-    instagram_feed = models.TextField(max_length=2500, blank=True, help_text='Instagram embeded code.')
-    copyright = models.CharField(max_length=100, blank=True, help_text='Bottom copyright text.')
+    copyright = models.CharField(max_length=100, help_text='Bottom copyright text.')
 
     # Manager
     objects = models.Manager()
@@ -103,20 +102,20 @@ class Newsletter(models.Model):
 
 class TechStack(models.Model):
     """Professional working stack."""
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30, help_text='Name of technology.')
     icon = models.ImageField(upload_to='techstack/', help_text='Logo icon.')
-    description = models.TextField(max_length=300, help_text='Just core description of service-related usage.')
+    description = models.TextField(max_length=2500, help_text='Just core description of service-related usage.')
     url = models.URLField(max_length=150, help_text='Website of the technology.')
-    show = models.BooleanField(default=True, help_text='Should be rendered?')
 
     # Manager
     objects = models.Manager()
 
     class Meta:
         verbose_name_plural = 'Techstack'
-        ordering = ['show']
+        ordering = ['id']
         indexes = [
-            models.Index(fields=['show']),
+            models.Index(fields=['id']),
         ]
 
     def __str__(self):
