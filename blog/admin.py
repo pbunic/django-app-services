@@ -8,12 +8,13 @@ from .models import (
     Newsletter,
     TechStack,
     Post,
+    HomeLab,
 )
 
 
 @admin.register(Info)
 class InfoAdmin(admin.ModelAdmin):
-    list_display = ['base_title', 'home_title', 'contact_email']
+    list_display = ['base_title']
 
     def has_add_permission(self, request):
         # Restrict object add if already exists
@@ -37,7 +38,6 @@ class InfoAdmin(admin.ModelAdmin):
             info_instance.about_blog = obj.about_blog
             info_instance.about_author = obj.about_author
             info_instance.contact_email = obj.contact_email
-            info_instance.instagram_feed = obj.instagram_feed
             info_instance.copyright = obj.copyright
             info_instance.save()
 
@@ -48,7 +48,7 @@ class FooterAdmin(admin.ModelAdmin):
     list_filter = ['link_section']
     search_fields = ['link_section', 'link_name']
     prepopulated_fields = {'link_slug': ('link_name',)}
-    ordering = ['link_section']
+    ordering = ['-link_section']
 
 
 @admin.register(Newsletter)
@@ -70,7 +70,7 @@ class TechStackAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'publish', 'status']
+    list_display = ['title', 'slug', 'status', 'publish']
     list_filter = ['status', 'created', 'publish']
     search_fields = ['title', 'body']
     prepopulated_fields = {'slug': ('title',)}
@@ -79,3 +79,28 @@ class PostAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '72'})},
     }
+
+
+@admin.register(HomeLab)
+class HomeLabAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
+    def has_add_permission(self, request):
+        # Restrict object add if already exists
+        if not HomeLab.objects.exists():
+            return True
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        # Restrict delete
+        return False
+
+    def save_model(self, request, obj, form, change):
+        # Database model update
+        if not HomeLab.objects.exists():
+            obj.save()
+        else:
+            lab_instance = HomeLab.objects.first()
+            lab_instance.title = obj.title
+            lab_instance.body = obj.body
+            lab_instance.save()

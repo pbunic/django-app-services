@@ -171,6 +171,16 @@ def homelab_page(request):
     return render(request, 'blog/homelab.html')
 
 
+def reviews_page(request):
+    """Reviews page."""
+    return render(request, 'blog/reviews.html')
+
+
+def projects_page(request):
+    """Projects page."""
+    return render(request, 'blog/projects.html')
+
+
 def services_page(request):
     """Services page."""
     return render(request, 'blog/services.html')

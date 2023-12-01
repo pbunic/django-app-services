@@ -69,10 +69,10 @@ class Footer(models.Model):
     social = FooterSocialManager()
 
     class Meta:
-        verbose_name_plural = 'Footer links'
-        ordering = ['-link_section']
+        verbose_name_plural = 'Footer Map'
+        ordering = ['link_section']
         indexes = [
-            models.Index(fields=['-link_section']),
+            models.Index(fields=['link_section']),
         ]
 
     def __str__(self):
@@ -168,3 +168,19 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.slug])
+
+
+class HomeLab(models.Model):
+    """Homelab presentation."""
+    title = models.CharField(max_length=120)
+    lab_image = models.ImageField()
+    body = MDTextField()
+
+    # Manager
+    objects = models.Manager()
+
+    class Meta:
+        verbose_name_plural = 'Homelab'
+
+    def __str__(self):
+        return 'Homelab'
