@@ -9,13 +9,13 @@ from taggit.managers import TaggableManager
 
 class Info(models.Model):
     """Site-related base informations."""
-    base_title = models.CharField(max_length=30, help_text='Navigation spot title.')
-    home_title = models.CharField(max_length=50, help_text='Landing page title.')
-    home_paragraph = models.TextField(max_length=500, help_text='Landing page short introduction.')
-    about_blog = models.TextField(max_length=2500, help_text='Blog vision and summary.')
-    about_author = models.TextField(max_length=2500, help_text='Some informations about author.')
-    contact_email = models.EmailField(help_text='Email for contact.')
-    copyright = models.CharField(max_length=100, help_text='Bottom copyright text.')
+    base_title = models.CharField(max_length=30, default='Title', help_text='Navigation spot title.')
+    home_title = models.CharField(max_length=50, default='Title', help_text='Landing page title.')
+    home_paragraph = models.TextField(max_length=500, default='Paragraph', help_text='Landing page short introduction.')
+    about_blog = models.TextField(max_length=2500, default='blog', help_text='Blog vision and summary.')
+    about_author = models.TextField(max_length=2500, default='author', help_text='Some informations about author.')
+    contact_email = models.EmailField(default='mail@example.com', help_text='Email for contact.')
+    copyright = models.CharField(max_length=100, default='(c)', help_text='Bottom copyright text.')
 
     # Manager
     objects = models.Manager()
